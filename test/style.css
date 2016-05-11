@@ -1,0 +1,157 @@
+body{
+	background-color: #252835;
+}
+
+.container-fluid{
+	margin: 0px;
+}
+
+.row{
+	margin:0px;
+}
+
+/*[class*="col-"]{
+	border: 1px solid #ffffff;
+	background-color: #cccccc;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	text-align: center;
+}*/
+
+.navbar-default{
+	/*background-color: #252839;*/
+	height: 81px;
+	border: none;
+	background-color: rgba(25,28,39,0.9);
+}
+
+.navbar-brand{
+	height: 120px;
+	width: 120px;
+	float: left;
+	position: absolute;
+	margin-top:-10px; 
+	left: 50px;
+	top: 0px;
+}
+
+#hicatLogo{
+	  -webkit-filter: drop-shadow(2px 2px 2px #222);
+    filter:         drop-shadow(2px 2px 2px #222); 
+}
+
+.navbar-text {
+	font-size: 51px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding-left: 140px;
+}
+#hicat{
+	color: #ccc;
+}
+
+.jumbotron{
+	padding-top: 180px;
+	padding-left: 30px;
+	min-height: 600px;
+    background: url(img/hicat2.jpg) no-repeat center center; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	color: #ffffff;
+}
+
+#jump-input{
+	border-radius:24px; 
+
+}
+
+#emailInput{
+	width: 300px;
+}
+
+/*#featureList h4, p{
+	color: #ffffff;
+}*/
+
+#icon1 img{
+	width: 70px;
+}
+
+#icon2 img{
+	width: 80px;
+}
+
+#icon3 img{
+	width: 80px;
+}
+
+#icon4 img{
+	width: 70px;
+}
+
+#icon5 img{
+	width: 80px;
+}
+
+#icon6 img{
+	width: 80px;
+}
+
+#icon7 {
+	width: 300px;
+	padding-left: 20%;
+}
+
+#icon8 ,#icon9 {
+	width: 300px;
+	padding: 20px;
+	margin: auto 10px ;
+}
+
+#coulddolist {
+	padding: 30px;
+	background-color: #eee;
+	width: 100%;
+}	
+
+#featureblock {
+	padding: 10px;
+	margin: 40px 0px;
+	color: #f4f4f4;
+	font-weight: 200;
+}
+
+#featureblock-container .col-md-4{
+	padding: 25px;
+}
+
+.media-body p {
+	font-weight: 100;
+}
+
+.wrapper{
+	padding-top: 50px; 
+}
+
+#links {
+	margin-top: 100px;
+	margin-bottom: 300px;
+	color: #eee;
+}
+
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 22px;
+    line-height: normal;
+    -webkit-border-radius: 0px;
+       -moz-border-radius: 0px;
+            border-radius: 0px;
+            border: 2px solid;
+    background: none;
+}
+
+
+
+
