@@ -1,0 +1,33 @@
+<title>hicat control</title>
+<head><meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes” />
+</head>
+<a href=./hicat/files target=blank>Download video</a><br>
+<script type="text/javascript">  
+ var outStr="<a href=./hicat/setTime?time=";     
+  var currentDate = new Date();  
+   outStr=outStr+currentDate.getFullYear()+"-";//获取完整的年份(4位,1970-????)  
+    outStr=outStr+currentDate.getMonth()+"-";//获取当前月份(0-11,0代表1月)  
+     outStr=outStr+currentDate.getDate()+"-"; //获取当前日(1-31)  
+      outStr=outStr+currentDate.getHours()+"-"; //获取当前小时数(0-23)  
+       outStr=outStr+currentDate.getMinutes()+"-";//获取当前分钟数(0-59)  
+        outStr=outStr+currentDate.getSeconds()+" target=blank>Setting time</a>";//获取当前秒数(0-59)  
+         document.write(outStr);  
+         </script> 
+<br>
+<a href=./hicat/stationMode target=blank>Station mode</a>
+<br>
+<a href=./hicat/record?save=1 target=blank>Start recording</a>
+<br>
+<a href=./hicat/record?save=0 target=blank>Stop recording</a>
+<br>
+<a href=./hicat/setCamera?resolve=0&rotate=0 target=blank>0-720P(1280*720)</a>&nbsp
+<a href=./hicat/setCamera?resolve=1&rotate=0 target=blank>0-QVGA(320*240)</a>&nbsp
+<a href=./hicat/setCamera?resolve=2&rotate=0 target=blank>0-VGA(640*480)</a>
+<br>
+<a href=./hicat/setCamera?resolve=0&rotate=1 target=blank>1-720P(1280*720)</a>&nbsp
+<a href=./hicat/setCamera?resolve=1&rotate=1 target=blank>1-QVGA(320*240)</a>&nbsp
+<a href=./hicat/setCamera?resolve=2&rotate=1 target=blank>1-VGA(640*480)</a>
+<br>
+<a href=./mmc/opencv/hi.html>OpenCV-match</a>
+<br>
+rtsp url is: rtsp://IP/hicat.264
