@@ -17,8 +17,8 @@ function createStars(className, amount) {
   }
 }
 
-createStars('bg-star', 1000);
-createStars('mid-star', 435);
+createStars('bg-star', 100);
+createStars('mid-star', 150);
 createStars('star', 100);
 
 var stars = document.querySelectorAll('.star');
