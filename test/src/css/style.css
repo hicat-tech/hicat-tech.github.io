@@ -1,5 +1,5 @@
 #livera-board-img {
-   width: 150px;
+   width: 30%;
    margin: 15px auto;
    display: block;
    z-index: 100;
@@ -24,11 +24,31 @@
 }
 
 body {
-	cursor: pointer;
+	/*cursor: pointer;*/
+}
+
+#left {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 100, 0.1);
+ }
+
+#leftBlock{
+	touch-action:none;
 }
 
 
-[class*="col-xs-4"]:active {
+/*[class*="col-xs-4"]:active {
+	background-color: #252835;
+	border: 1px solid #252835;
+	animation-name: btn-press;
+	animation-duration: 1s;
+	cursor: pointer;
+}*/
+#button:active {
 	background-color: #252835;
 	border: 1px solid #252835;
 	animation-name: btn-press;
@@ -36,12 +56,20 @@ body {
 	cursor: pointer;
 }
 
-[class*="col-xs-8"]:active {
+#button:hover{
+	cursor: pointer;
+}
+
+/*[class*="col-xs-8"]:active {
 	background-color: #252835;
 	border: 1px solid #252835;
 	animation-name: btn-press;
 	animation-duration: 1s;
 	cursor: pointer;
+}*/
+
+#leftBlock{
+	height: 200px;
 }
 
 
