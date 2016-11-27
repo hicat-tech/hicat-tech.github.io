@@ -27,18 +27,19 @@ body {
 	/*cursor: pointer;*/
 }
 
-#left {
+/*#left {
             position: absolute;
             left: 0;
             top: 0;
             height: 100%;
             width: 100%;
             background: rgba(0, 0, 100, 0.1);
- }
 
-#leftBlock{
+ }*/
+
+/*#leftBlock{
 	touch-action:none;
-}
+}*/
 
 
 /*[class*="col-xs-4"]:active {
@@ -60,6 +61,15 @@ body {
 	cursor: pointer;
 }
 
+#leftBlock{
+	background-color: #eee;
+}
+
+#exit-button{
+	text-align: center;
+	padding: 5px;
+}
+
 /*[class*="col-xs-8"]:active {
 	background-color: #252835;
 	border: 1px solid #252835;
@@ -68,14 +78,15 @@ body {
 	cursor: pointer;
 }*/
 
-#leftBlock{
-	height: 200px;
+/*#leftBlock{
+	padding: 50px;
 }
-
+*/
 
 .centerBlock {
                 display: table;
                 margin: 25px auto;
+                cursor: pointer;
             }
 
 #station-block{

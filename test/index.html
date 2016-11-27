@@ -30,10 +30,11 @@
 
 <div id="Robot-control">
   <div v-if="RobotControlToggle">
+   
     <div class="row" id="Robot-control-block">
       <div class="col-xs-8" id="leftBlock">
 
-        <div id="left"></div>
+       <!--  <div id="left"></div>
 
           <script src="src/js/nipplejs.js" charset="utf-8"></script>
             <script>
@@ -44,17 +45,67 @@
                 color: 'blue',
                 size: 150
             });
-            </script>
+            </script> -->
+        <div class="row">
+
+            <div class="col-xs-2" id="exit-button"
+                 @click="RobotControlStateToggle">
+            <div id="button">
+              <span>X</span>
+              </div>
+            </div>
+              
+        
+          <div class="col-xs-4 col-xs-offset-2" id="button">
+            <div class="centerBlock">
+              up
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4" id="button">
+            <div class="centerBlock">
+              left
+            </div>
+          </div>
+          <div class="col-xs-4 col-xs-offset-4" id="button">
+             <div class="centerBlock"> 
+              right
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4" id="button">
+            <div class="centerBlock">
+              down
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-xs-4">
         <div class="row">
-        <div class="col-xs-12">up
+        <div class="col-xs-12" id="button">
+          <div class="centerBlock">
+            up
           </div>
         </div>
-        <div class="row">laser</div>
-        <div class="row">down</div>
+        </div>
+        <div class="row"> 
+          <div class="col-xs-12" id="button">
+            <div class="centerBlock">
+              laser
+            </div>
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="col-xs-12" id="button">
+            <div class="centerBlock">
+              down
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </div> 
   </div>
   
 
