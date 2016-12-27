@@ -47,46 +47,26 @@
                                     <span>X</span>
                                 </div>
                             </div>
-                            <div class="col-xs-4 col-xs-offset-2" id="button"
-                            v-on="touchstart: RobotCommand('motor 150 150\n')"
-                            v-on="touchend: RobotCommand('motor 0 0\n')"
-                            @mousedown="RobotCommand('motor 150 150\n')"
-                            @mouseup="RobotCommand('motor 0 0\n')"
-                            >
+                            <div class="col-xs-4 col-xs-offset-2" id="button">
                                 <div class="centerBlock">
                                     <span class="glyphicon glyphicon-menu-up" id="record-icon" aria-hidden="true"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-4" id="button"
-                              v-on="touchstart: RobotCommand('motor 0 80\n')"
-                            v-on="touchend: RobotCommand('motor 0 0\n')"
-                            @mousedown="RobotCommand('motor 0 80\n')"
-                            @mouseup="RobotCommand('motor 0 0\n')"
-                            >
+                            <div class="col-xs-4" id="button">
                                 <div class="centerBlock">
                                     <span class="glyphicon glyphicon-menu-left" id="record-icon" aria-hidden="true"></span>
                                 </div>
                             </div>
-                            <div class="col-xs-4 col-xs-offset-4" id="button"
-                              v-on="touchstart: RobotCommand('motor 80 0\n')"
-                            v-on="touchend: RobotCommand('motor 0 0\n')"
-                            @mousedown="RobotCommand('motor 80 0\n')"
-                            @mouseup="RobotCommand('motor 0 0\n')"
-                            >
+                            <div class="col-xs-4 col-xs-offset-4" id="button">
                                 <div class="centerBlock">
                                     <span class="glyphicon glyphicon-menu-right" id="record-icon" aria-hidden="true"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-4 col-xs-offset-4" id="button"
-                              v-on="touchstart: RobotCommand('motor -150 -150\n')"
-                              v-on="touchend: RobotCommand('motor 0 0\n')"
-                              @mousedown="RobotCommand('motor -150 -150\n')"
-                              @mouseup="RobotCommand('motor 0 0\n')"
-                            >
+                            <div class="col-xs-4 col-xs-offset-4" id="button">
                                 <div class="centerBlock">
                                     <span class="glyphicon glyphicon-menu-down" id="record-icon" aria-hidden="true"></span>
                                 </div>
@@ -95,27 +75,21 @@
                     </div>
                     <div class="col-xs-4">
                         <div class="row">
-                            <div class="col-xs-12" id="button"
-                              @click="RobotCommand('camera up\n')"
-                            >
+                            <div class="col-xs-12" id="button">
                                 <div class="centerBlock">
                                     <span class="glyphicon glyphicon-triangle-top" id="record-icon" aria-hidden="true"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-12" id="button"
-                              @click="RobotCommand('laser\n')"
-                            >
+                            <div class="col-xs-12" id="button">
                                 <div class="centerBlock">
                                     <span class="glyphicon glyphicon-asterisk" id="record-icon" aria-hidden="true"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-12" id="button"
-                              @click="RobotCommand('camera down\n')"
-                            >
+                            <div class="col-xs-12" id="button">
                                 <div class="centerBlock">
                                     <span class="glyphicon glyphicon-triangle-bottom" id="record-icon" aria-hidden="true"></span>
                                 </div>
@@ -197,42 +171,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-
-                    <div class="btn-group btn-group-lg" role="group" aria-label="..." id="apAdSwitch">
-                        <button type="button" class="btn btn-default" @click="adModeSwitch">
-                            AD</button>
-                        <button type="button" class="btn btn-default" @click="apModeSwitch">AP</button>
-                    </div>
-                    <div id="ad-block" v-show="wifiModes">
-                        <span id="apAdNotice">AD mode would let Livera connect to local WIFI router</span>
-                        <input type="WIFI" class="form-control" id="inputWifi" placeholder="Local WIFI Name" v-model="wifiName">
-                        <input type="WIFI" class="form-control" id="inputPassward" placeholder="Password" v-model="wifiPassward">
-                        <button type="submit" class="btn btn-lg" @click="stationModeStart">
-                            Submit
-                        </button>
-                    </div>
-                    <div id="ap-block" v-show="!wifiModes">
-                        <span id="apAdNotice">AP mode enables Livera become stand alone WIFI, without input will activate default setting at:hicat 88888888</span>
-                        <input type="WIFI" class="form-control" id="inputWifi" placeholder="AP WIFI Name" v-model="wifiName">
-                        <input type="WIFI" class="form-control" id="inputPassward" placeholder="Password" v-model="wifiPassward">
-                        <button type="submit" class="btn btn-lg" @click="apModeStart">
-                            Submit
-                        </button>
-                    </div>
-                    <div class="alert alert-warning" role="alert" v-show="wifiAlertState">
-                        {{wifiAlertMessage}}</div>
-
-                   <!--  <span v-show="wifiModes" id="apAdNotice">AD mode would let Livera connect to WIFI router</span>
-                      <span v-show="!wifiModes" id="apAdNotice">AP mode enables Livera become stand alone WIFI</span> -->
-
-                   <!--  <input type="WIFI" class="form-control" id="inputWifi" placeholder="WIFI Name"
+                    <input type="WIFI" class="form-control" id="inputWifi" placeholder="WIFI Name"
                             v-model="wifiName">
                     <input type="WIFI" class="form-control" id="inputPassward" placeholder="Password"
                             v-model="wifiPassward">
                     <button type="submit" class="btn btn-lg"
                             @click="stationModeStart">
                           Submit
-                          </button> -->
+                          </button>
                 </div>
             </div>
         </div>
@@ -240,7 +186,7 @@
             <div class="col-xs-4" id="button" @click="wifiStateToggle">
                 <div class="centerBlock">
                     <span class="glyphicon glyphicon-signal" id="record-icon" aria-hidden="true"></span>
-                    <span>WIFI</span>
+                    <span>Station(WIFI)</span>
                 </div>
             </div>
             <div class="col-xs-4" id="button" @click="RobotControlStateToggle">
@@ -252,7 +198,7 @@
             <div class="col-xs-4" id="button">
                 <div class="centerBlock">
                     <span class="glyphicon glyphicon-road" id="record-icon" aria-hidden="true"></span>
-                    <span>Tracking</span>
+                    <span>LineTrack</span>
                 </div>
             </div>
         </div>
@@ -871,7 +817,9 @@
         </svg>
     </template>
     <script>
-  var xhr;
+    var recordToggle = null;
+    var station_show = null;
+    var RobotControlToggle = null;
 
     var vm = new Vue({
         el: '#app',
@@ -879,15 +827,6 @@
             recordToggle: true,
             station_show: false,
             RobotControlToggle: false,
-            //true for ad, false for ap
-            wifiModes: true,
-            wifiAlertState: false,
-            wifiAlertMessage: "",
-            wifiAdAlert: "connecting to WIFI router, this IP address will change to: (curren IP of Livera)/mmc/www/index.html \n Notice: press livera reset button for 3 second will roll back to default AP mode!",
-            wifiInputAlert: "please fill up the input",
-            apWifiInputAlert:"default wifi activated, please check your wifi list",
-            // currentWifiMode:'ad',
-            xhr:null,
             //ajax web API
             startRecordAPI: '/hicat/record?save=1',
             stopRecordAPI: '/hicat/record?save=0',
@@ -898,47 +837,32 @@
             //PS:could not record video or snapshot under Mjpg mode
             //RTSP:mode=0 Mjpg:mode=1
             switchModeAPI: '/hicat/videoServer?mode=',
-            stationModeAPI:'/hicatx/stationMode?',
-            apModeAPI:'/hicat/apMode?',
-            WebSocketURL:'',
-            command:'',
-            ws:'',
+            stationModeAPI:'/hicat/stationMode?',
             wifiName:null,
             wifiPassward:null,
             //return object from filedownload
-            videoDir: ''
-
+            videoDir: '',
+            currentAjaxAPI:'null'
         },
         methods: {
+            recordStateToggle: function() {
+                return this.recordToggle = !this.recordToggle;
+            },
             wifiStateToggle: function() {
-                vm.wifiAlertState = false;
                 return this.station_show = !this.station_show;
             },
             RobotControlStateToggle: function() {
-                 this.RobotControlToggle = !this.RobotControlToggle;
-                 vm.WebSocketURL = 'ws://' + window.location.hostname+':7681'
-
-                 if (vm.RobotControlToggle == true) {
-                   vm.ws = new WebSocket(vm.WebSocketURL);
-                   vm.ws.onopen=function(event){
-                      console.log('ws connection opened:'+WebSocketURL);
-                   }
-                 }
+                return this.RobotControlToggle = !this.RobotControlToggle;
             },
-            RobotCommand:function(command){
-              vm.ws.send(command);
-              console.log('event triggered:'+command);
+            ajaxRequest: function(ajaxAPI) {
+                var xhr = new XMLHttpRequest();
+                var self = this;
+
+                xhr.open('GET', ajaxAPI, true);
+                console.log("accepted URL:" + ajaxAPI);
+
+                xhr.send();
             },
-            // ajaxRequest: function(ajaxAPI) {
-            //     var xhr = new XMLHttpRequest();
-            //     var self = this;
-
-            //     xhr.open('GET', ajaxAPI, true);
-            //     console.log("accepted URL:" + ajaxAPI);
-
-            //     xhr.send();
-            //     return xhr;
-            // },
             videoCapture: function() {
                 var xhr = new XMLHttpRequest()
                 var self = this
@@ -968,12 +892,8 @@
             },
             fileDownload: function() {
                 console.log("see click!");
-                var xhr = new XMLHttpRequest();
-            //     var self = this;
-
-                xhr.open('GET', this.fileDownloadAPI, true);
-                // this.ajaxRequest(this.fileDownloadAPI);
-                console.log("sent request! the request is:"+this.fileDownloadAPI);
+                this.ajaxRequest(this.fileDownloadAPI);
+                console.log("sent request!");
 
                   xhr.onload = function() {
                     console.log("got message!");
@@ -982,65 +902,23 @@
                     this.videoDir = answer;
                     console.log(answer.files);
                 }
-                xhr.send();
+               
             },
             changeVideoReso: function(updateReso) {
                 console.log("see click!");
-                // this.ajaxRequest(this.videoResoAPI + updateReso);
-                var xhr = new XMLHttpRequest();
-            //     var self = this;
-
-                xhr.open('GET', this.videoResoAPI, true);
-                xhr.onload = function(){
-                  var answer = JSON.parse(xhr.responseText);
-                  console.log(answer.result);
-                }
-                xhr.send();
-            },
-            adModeSwitch:function(){
-              vm.wifiAlertState = false;
-              return vm.wifiModes = true;
-            },
-            apModeSwitch:function(){
-              vm.wifiAlertState = false;
-              return vm.wifiModes = false;
-            },
-            apModeStart:function(){
-              console.log('see click!');
-              if (this.wifiName == null) {
-                vm.wifiAlertState = true;
-                return vm.wifiAlertMessage = vm.apWifiInputAlert;
-              }else{
-              var currentWifiInfo =this.stationModeAPI+ "ssid="+this.wifiName+"&password="+this.wifiPassward;
-              console.log('wifiAPI:'+currentWifiInfo);
-             
-             var xhr = new XMLHttpRequest();
-
-
-                xhr.open('GET', currentWifiInfo, true);
-           
-                xhr.send();
-                vm.wifiAlertState = true;
-                return vm.wifiAlertMessage = vm.wifiAdAlert;
-              }
+                this.ajaxRequest(this.videoResoAPI + updateReso);
+                console.log(answer.result);
             },
             stationModeStart:function(){
               console.log('see click!');
               if (this.wifiName == null) {
-                vm.wifiAlertState = true;
-                return vm.wifiAlertMessage = vm.wifiInputAlert;
+                alert('please fill up the place')
+                return 0;
               }else{
               var currentWifiInfo =this.stationModeAPI+ "ssid="+this.wifiName+"&password="+this.wifiPassward;
               console.log('wifiAPI:'+currentWifiInfo);
-             
-             var xhr = new XMLHttpRequest();
-
-
-                xhr.open('GET', currentWifiInfo, true);
-           
-                xhr.send();
-                vm.wifiAlertState = true;
-                return vm.wifiAlertMessage = vm.wifiAdAlert;
+              this.ajaxRequest(currentWifiInfo);
+                alert("connecting to WIFI router, this IP address will change to: (curren IP of Livera)/mmc/www/index.html \n Notice: press livera reset button for 3 second will roll back to AP mode!");
             }
           }
         },

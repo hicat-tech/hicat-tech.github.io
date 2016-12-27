@@ -1,31 +1,33 @@
 #livera-board-img {
-   width: 30%;
-   margin: 15px auto;
-   display: block;
-   z-index: 100;
+    width: 160px;
+    margin: 15px auto;
+    display: block;
+    z-index: 100;
     /*-webkit-animation:spin 3s linear infinite;
     -moz-animation:spin 3s linear infinite;
     animation:spin 3s linear infinite;*/
 }
 
 #topbar {
-	background-color: #252835;
-	position: relative;
-	z-index: -2;
+    background-color: #252835;
+    position: relative;
+    z-index: -2;
+    height: 250px;
 }
 
 #app {
-	background-color: #eee;
+    background-color: #eee;
 }
 
 [class*="col-"] {
-	background-color: #fff;
-	border: 1px solid #252835;
+    background-color: #fff;
+    border: 1px solid #252835;
 }
 
 body {
-	/*cursor: pointer;*/
+    /*cursor: pointer;*/
 }
+
 
 /*#left {
             position: absolute;
@@ -36,6 +38,7 @@ body {
             background: rgba(0, 0, 100, 0.1);
 
  }*/
+
 
 /*#leftBlock{
 	touch-action:none;
@@ -49,26 +52,29 @@ body {
 	animation-duration: 1s;
 	cursor: pointer;
 }*/
+
 #button:active {
-	background-color: #252835;
-	border: 1px solid #252835;
-	animation-name: btn-press;
-	animation-duration: 1s;
-	cursor: pointer;
+    background-color: #252835;
+    border: 1px solid #252835;
+    animation-name: btn-press;
+    animation-duration: 1s;
+    cursor: pointer;
 }
 
-#button:hover{
-	cursor: pointer;
+#button:hover {
+    cursor: pointer;
 }
 
-#leftBlock{
-	background-color: #eee;
+#leftBlock {
+    background-color: #eee;
 }
 
-#exit-button{
-	text-align: center;
-	padding: 5px;
+#exit-button {
+    display: table;
+    font-size: 1.5em;
+    margin: 10px auto;
 }
+
 
 /*[class*="col-xs-8"]:active {
 	background-color: #252835;
@@ -78,35 +84,64 @@ body {
 	cursor: pointer;
 }*/
 
+
 /*#leftBlock{
 	padding: 50px;
 }
 */
 
 .centerBlock {
-                display: table;
-                margin: 25px auto;
-                cursor: pointer;
-            }
+    display: table;
+    margin: 25px auto;
+    cursor: pointer;
+}
 
-#station-block{
-	
-	padding-top: 15px;
-	background-color:#eee;
+#station-block {
+    background-color: #eee;
+}
+
+.form-group {
+    margin: 10px;
+    padding: 5px 20px;
+}
+
+#apAdSwitch {
+    margin-bottom: 15px;
+}
+
+#apAdNotice {
+    display: block;
+    padding-bottom: 10px;
+}
+
+#inputWifi {
+    margin-bottom: 15px;
+}
+
+.form-group button {
+    margin-top: 15px;
 }
 
 #record-icon {
-	display: block;
-	text-align: center;
-	font-size: 35px;
-	color: #252835;
-	margin-bottom: 5px;
+    display: block;
+    text-align: center;
+    font-size: 35px;
+    color: #252835;
+    margin-bottom: 5px;
 }
 
-@keyframe btn-press{
- 0%{-webkit-transform: scale(1.2em); transform:scale(1.2em);}
-	100% { -webkit-transform: scale(1.2em); transform:scale(1.2em); }
-	 }
+@keyframe btn-press {
+    0% {
+        -webkit-transform: scale(1.2em);
+        transform: scale(1.2em);
+    }
+    100% {
+        -webkit-transform: scale(1.2em);
+        transform: scale(1.2em);
+    }
+}
+
+
 }
 
 /*@-moz-keyframes spin { 
@@ -124,6 +159,3 @@ body {
 
 
 */
-
-
-
