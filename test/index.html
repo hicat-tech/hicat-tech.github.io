@@ -890,7 +890,11 @@
         </svg>
     </template>
     <script>
-  var xhr;
+
+window.ontouchstart = function(e) { 
+    e.preventDefault(); 
+};
+
 
     var vm = new Vue({
         el: '#app',
