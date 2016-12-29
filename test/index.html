@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="src/bootstrap-3.3.6-dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="src/css/style.css">
     <link rel="stylesheet" href="src/css/style-space.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="sec/img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="src/img/favicon-96x96.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 
@@ -149,6 +151,23 @@
                 </div>
             </div>
         </div>
+
+        <div id="download-popup" v-show="showVideo">
+               <div class="row">
+                        <div class="col-xs-2" id="button" @click="closeFileDownload">
+                        <div id="exit-button">
+                            <span>X</span>
+                        </div>
+                    </div>
+                     </div>
+          <ul id="download-popup-list">
+            <li v-for="videoDir in videoDirs">
+              <a :href="videoDownloadDir+videoDir" target="_blank">{{ videoDir}}</a>
+            </li>
+          </ul>
+          </div>
+
+       
         <!-- </div> -->
         <!-- 1.station mode  2.rc car 3.LineTrack 4.screen reso 5.old api -->
         <div id="screen-resolution">
@@ -879,12 +898,13 @@
             recordToggle: true,
             station_show: false,
             RobotControlToggle: false,
+            showVideo:false,
             //true for ad, false for ap
             wifiModes: true,
             wifiAlertState: false,
             wifiAlertMessage: "",
             wifiAdAlert: "connecting to WIFI router, this IP address will change to: (curren IP of Livera)/mmc/www/index.html \n Notice: press livera reset button for 3 second will roll back to default AP mode!",
-            wifiInputAlert: "please fill up the input",
+            wifiInputAlert: "please fill up the form",
             apWifiInputAlert:"default wifi activated, please check your wifi list",
             // currentWifiMode:'ad',
             xhr:null,
@@ -892,6 +912,7 @@
             startRecordAPI: '/hicat/record?save=1',
             stopRecordAPI: '/hicat/record?save=0',
             fileDownloadAPI: '/hicat/files',
+            videoDownloadDir:window.location.hostname+'mmc/video/',
             videoResoAPI: '/hicat/setCamera?',
             snapshotAPI: '/hicat/snapshot?',
             //switch mode from Mjpg to RTSP
@@ -906,7 +927,7 @@
             wifiName:null,
             wifiPassward:null,
             //return object from filedownload
-            videoDir: ''
+            videoDirs: []
 
         },
         methods: {
@@ -966,7 +987,13 @@
                 }
                 xhr.send()
             },
+            closeFileDownload:function(){
+              return vm.showVideo = false;
+            },
             fileDownload: function() {
+              if(vm.showVideo == true){
+                return vm.showVideo = false;
+              }
                 console.log("see click!");
                 var xhr = new XMLHttpRequest();
             //     var self = this;
@@ -977,10 +1004,12 @@
 
                   xhr.onload = function() {
                     console.log("got message!");
-                    var answer = JSON.parse(xhr.responseText);
-                    console.log("the message is:" + answer);
-                    this.videoDir = answer;
-                    console.log(answer.files);
+                     var rawFileMessage = JSON.parse(xhr.responseText);
+                     for (var i = 0; i < rawFileMessage.files.length; i++) {
+                       vm.videoDirs.push(rawFileMessage.files[i].name);
+                     }
+                    console.log(vm.videoDirs);
+                    return vm.showVideo = true;
                 }
                 xhr.send();
             },
@@ -1027,6 +1056,7 @@
             stationModeStart:function(){
               console.log('see click!');
               if (this.wifiName == null) {
+                console.log('didnt fill out form!');
                 vm.wifiAlertState = true;
                 return vm.wifiAlertMessage = vm.wifiInputAlert;
               }else{

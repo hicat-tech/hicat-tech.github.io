@@ -38,10 +38,10 @@ function calculateDrift(star) {
   star.classList.add(upOrDown + '-' + leftOrRight);
 }
 
-for (var i = 0; i < stars.length; i++) {
-  calculateDrift(stars[i]);
-}
+// for (var i = 0; i < stars.length; i++) {
+//   calculateDrift(stars[i]);
+// }
 
-for (var i = 0; i < midStars.length; i++) {
-  calculateDrift(midStars[i]);
-}
+// for (var i = 0; i < midStars.length; i++) {
+//   calculateDrift(midStars[i]);
+// }

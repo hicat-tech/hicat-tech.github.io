@@ -31,13 +31,13 @@
   }
 }
 * {
-  box-sizing: border-box;
+  /*box-sizing: border-box;*/
 }
 
-html, #star-field {
-  width: 100%;
+#star-field {
+  width: 95%;
   height: 100%;
- /* overflow: hidden;*/
+  /*overflow: scroll;*/
   position: absolute;
   z-index: -1000;
 }
