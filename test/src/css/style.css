@@ -82,6 +82,7 @@
 
 #download-popup-list, li{
 	padding: 10px;
+	font-size: 30px;
 }
 
 /*[class*="col-xs-8"]:active {

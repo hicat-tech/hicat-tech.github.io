@@ -17,7 +17,9 @@
 
 <body id="app" ontouchstart="">
     <div class="containor-fluid">
-        <div class="row">
+       
+        <div class="row"
+             v-show="topbarToggle">
             <div class="col-xs-12" id="topbar">
                 <div id="star-field"></div>
                 <div>
@@ -27,6 +29,16 @@
                 <script src="src/js/index.js"></script>
             </div>
         </div>
+
+        <div class="row"
+              v-show="!topbarToggle">
+
+              <img :src="liveviewURL">
+                
+
+
+        </div>
+        
         <div id="Robot-control">
             <div v-if="RobotControlToggle">
                 <div class="row" id="Robot-control-block">
@@ -152,6 +164,47 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-xs-4" @click="takeSnapshot" id="button">
+                <div class="centerBlock">
+                    <div id="btn-record-start" 
+                         @click="recordToggle">
+                        <span class="glyphicon glyphicon-camera" id="record-icon" aria-hidden="true"></span>
+                        <span>SNAPSHOT</span>
+                    </div>
+                   <!--  <div id="btn-record-stop" 
+                         v-show="!recordToggle">
+                        <span class="glyphicon glyphicon-stop" style="color:red" id="record-icon" aria-hidden="true"></span>
+                        <span>STOP</span>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="col-xs-4" @click="topbarStateToggle" id="button">
+                <div class="centerBlock">
+                    <div id="btn-record-start" 
+                         @click="recordToggle">
+                        <span class="glyphicon glyphicon-film" id="record-icon" aria-hidden="true"></span>
+                        <span>LIVEVIEW</span>
+                    </div>
+                   <!--  <div id="btn-record-stop" 
+                         v-show="!recordToggle">
+                        <span class="glyphicon glyphicon-stop" style="color:red" id="record-icon" aria-hidden="true"></span>
+                        <span>STOP</span>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="col-xs-4" id="button" @click="videoResoStateToggle">
+                <div class="centerBlock">
+                    <div id="btn-video-download">
+                        <span class="glyphicon glyphicon-hd-video" id="record-icon" aria-hidden="true"></span>
+                        <span>QUALITY</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="download-popup" v-show="showVideo">
                <div class="row">
                         <div class="col-xs-2" id="button" @click="closeFileDownload">
@@ -170,7 +223,8 @@
        
         <!-- </div> -->
         <!-- 1.station mode  2.rc car 3.LineTrack 4.screen reso 5.old api -->
-        <div id="screen-resolution">
+        <div id="screen-resolution" 
+              v-show="screenResoToggle">
             <div class="row">
                 <div class="col-xs-4" id="button" @click="changeVideoReso('resolve=0&rotate=0')">
                     <div class="centerBlock">
@@ -899,14 +953,17 @@
     var vm = new Vue({
         el: '#app',
         data: {
+            topbarToggle:true,
             recordToggle: true,
             station_show: false,
             RobotControlToggle: false,
             showVideo:false,
+            screenResoToggle:false,
             //true for ad, false for ap
             wifiModes: true,
             wifiAlertState: false,
             wifiAlertMessage: "",
+            liveviewURL:'http://'+window.location.hostname + ':8080',
             wifiAdAlert: "connecting to WIFI router, this IP address will change to: (curren IP of Livera)/mmc/www/index.html \n Notice: press livera reset button for 3 second will roll back to default AP mode!",
             wifiInputAlert: "please fill up the form",
             apWifiInputAlert:"default wifi activated, please check your wifi list",
@@ -918,7 +975,9 @@
             fileDownloadAPI: '/hicat/files',
             videoDownloadDir:window.location.hostname+'mmc/video/',
             videoResoAPI: '/hicat/setCamera?',
-            snapshotAPI: '/hicat/snapshot?',
+            snapshotCounts:0,
+            snapshotAPI: '/hicat/snapshot?name=',
+            snapshotStoreDir:'/www/mmc/video/',
             //switch mode from Mjpg to RTSP
             //PS:could not record video or snapshot under Mjpg mode
             //RTSP:mode=0 Mjpg:mode=1
@@ -935,6 +994,30 @@
 
         },
         methods: {
+            topbarStateToggle:function(){
+       
+                this.topbarToggle = !this.topbarToggle;
+
+                if (this.topbarToggle == false) {
+                  var xhr = new XMLHttpRequest()
+
+                  xhr.open('GET', this.switchModeAPI + '1', true)
+
+                  xhr.onload=function(){
+                    console.log('Mjpg'+JSON.parse(xhr.responseText));
+                  }
+                }else{
+                     var xhr = new XMLHttpRequest()
+
+                  xhr.open('GET', this.switchModeAPI + '0', true)
+                
+
+                  xhr.onload=function(){
+                    console.log('RTSP'+JSON.parse(xhr.responseText));
+                  }
+                }
+              
+            },
             wifiStateToggle: function() {
                 vm.wifiAlertState = false;
                 return this.station_show = !this.station_show;
@@ -948,6 +1031,8 @@
                    vm.ws.onopen=function(event){
                       console.log('ws connection opened:'+WebSocketURL);
                    }
+                 }else{
+                  // vm.ws.close();
                  }
             },
             RobotCommand:function(command){
@@ -996,6 +1081,7 @@
             },
             fileDownload: function() {
               if(vm.showVideo == true){
+                vm.videoDir = null;
                 return vm.showVideo = false;
               }
                 console.log("see click!");
@@ -1016,6 +1102,26 @@
                     return vm.showVideo = true;
                 }
                 xhr.send();
+            },
+            takeSnapshot:function(){
+              vm.snapshotCounts++;
+              console.log(vm.snapshotCounts);
+              var currentSnapshotAPI = this.snapshotAPI + this.snapshotCounts +'.jpg&dir='+this.snapshotStoreDir;
+                var xhr = new XMLHttpRequest();
+            //     var self = this;
+
+                xhr.open('GET', currentSnapshotAPI, true);
+                // this.ajaxRequest(this.fileDownloadAPI);
+                console.log("sent request! the request is:"+currentSnapshotAPI);
+
+                  xhr.onload = function() {
+                    console.log("got message!");
+                     var snapshotAnswer = JSON.parse(xhr.responseText);
+                     console.log(snapshotAnswer);
+                   }
+            },
+            videoResoStateToggle:function(){
+              return this.screenResoToggle = !this.screenResoToggle;
             },
             changeVideoReso: function(updateReso) {
                 console.log("see click!");
