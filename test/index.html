@@ -19,7 +19,7 @@
     <div class="containor-fluid">
        
         <div class="row"
-             v-show="topbarToggle">
+             v-if="topbarToggle">
             <div class="col-xs-12" id="topbar">
                 <div id="star-field"></div>
                 <div>
@@ -31,16 +31,16 @@
         </div>
 
         <div class="row"
-              v-show="!topbarToggle">
+              v-else>
 
-              <img :src="liveviewURL">
+              <img :src="liveviewURL" style="width:100%;">
                 
 
 
         </div>
         
         <div id="Robot-control">
-            <div v-if="RobotControlToggle">
+            <div v-show="RobotControlTogglePC">
                 <div class="row" id="Robot-control-block">
                     <div class="col-xs-8" id="leftBlock">
                         <!--  <div id="left"></div>
@@ -62,8 +62,6 @@
                                 </div>
                             </div>
                             <div class="col-xs-4 col-xs-offset-2" id="button"
-                            v-on="touchstart: RobotCommand('motor 150 150\n')"
-                            v-on="touchend: RobotCommand('motor 0 0\n')"
                             @mousedown="RobotCommand('motor 150 150\n')"
                             @mouseup="RobotCommand('motor 0 0\n')"
                             >
@@ -74,20 +72,17 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-4" id="button"
-                              v-on="touchstart: RobotCommand('motor 0 80\n')"
-                            v-on="touchend: RobotCommand('motor 0 0\n')"
-                            @mousedown="RobotCommand('motor 0 80\n')"
-                            @mouseup="RobotCommand('motor 0 0\n')"
+                              @mousedown="RobotCommand('motor 0 80\n')"
+                            @mouseup="RobotCommand('motor 0 0\n')" 
                             >
                                 <div class="centerBlock">
                                     <span class="glyphicon glyphicon-menu-left" id="record-icon" aria-hidden="true"></span>
                                 </div>
                             </div>
                             <div class="col-xs-4 col-xs-offset-4" id="button"
-                              v-on="touchstart: RobotCommand('motor 80 0\n')"
-                            v-on="touchend: RobotCommand('motor 0 0\n')"
-                            @mousedown="RobotCommand('motor 80 0\n')"
-                            @mouseup="RobotCommand('motor 0 0\n')"
+                           
+                           @mousedown="RobotCommand('motor 80 0\n')"
+                            @mouseup="RobotCommand('motor 0 0\n')" 
                             >
                                 <div class="centerBlock">
                                     <span class="glyphicon glyphicon-menu-right" id="record-icon" aria-hidden="true"></span>
@@ -96,9 +91,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-4 col-xs-offset-4" id="button"
-                              v-on="touchstart: RobotCommand('motor -150 -150\n')"
-                              v-on="touchend: RobotCommand('motor 0 0\n')"
-                              @mousedown="RobotCommand('motor -150 -150\n')"
+                           @mousedown="RobotCommand('motor -150 -150\n')"
                               @mouseup="RobotCommand('motor 0 0\n')"
                             >
                                 <div class="centerBlock">
@@ -138,9 +131,93 @@
                     </div>
                 </div>
             </div>
+
+
+            <div v-show="RobotControlToggleMobile">
+                <div class="row" id="Robot-control-block">
+                    <div class="col-xs-8" id="leftBlock">
+                        <div class="row">
+                            <div class="col-xs-2" id="button" @click="RobotControlStateToggle">
+                                <div id="exit-button">
+                                    <span>X</span>
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-xs-offset-2" id="button"
+                            @touchstart="RobotCommand('motor 150 150\n')"
+                            @touchend="RobotCommand('motor 0 0\n')"
+                            >
+                                <div class="centerBlock">
+                                    <span class="glyphicon glyphicon-menu-up" id="record-icon" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4" id="button"
+                             @touchstart="RobotCommand('motor 0 80\n')"
+                            @touchend="RobotCommand('motor 0 0\n')" 
+                            >
+                                <div class="centerBlock">
+                                    <span class="glyphicon glyphicon-menu-left" id="record-icon" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-xs-offset-4" id="button"
+                              @touchstart="RobotCommand('motor 80 0\n')"
+                            @touchend="RobotCommand('motor 0 0\n')" 
+                            >
+                                <div class="centerBlock">
+                                    <span class="glyphicon glyphicon-menu-right" id="record-icon" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 col-xs-offset-4" id="button"
+                              @touchstart="RobotCommand('motor -150 -150\n')"
+                              @touchend="RobotCommand('motor 0 0\n')" 
+                            >
+                                <div class="centerBlock">
+                                    <span class="glyphicon glyphicon-menu-down" id="record-icon" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="row">
+                            <div class="col-xs-12" id="button"
+                              @touchstart="RobotCommand('camera up\n')"
+                            >
+                                <div class="centerBlock">
+                                    <span class="glyphicon glyphicon-triangle-top" id="record-icon" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12" id="button"
+                              @touchstart="RobotCommand('laser\n')"
+                            >
+                                <div class="centerBlock">
+                                    <span class="glyphicon glyphicon-asterisk" id="record-icon" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12" id="button"
+                              @touchstart="RobotCommand('camera down\n')"
+                            >
+                                <div class="centerBlock">
+                                    <span class="glyphicon glyphicon-triangle-bottom" id="record-icon" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+
         <div class="row">
-            <div class="col-xs-8" @click="videoCapture" id="button">
+           
+            <div class="col-xs-8" @click="videoCapture" id="button" v-show="videoPhotoToggle">
                 <div class="centerBlock">
                     <div id="btn-record-start" 
                          v-show="recordToggle">
@@ -154,18 +231,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-4" id="button" @click="fileDownload">
-                <div class="centerBlock">
-                    <div id="btn-video-download">
-                        <span class="glyphicon glyphicon-save" id="record-icon" aria-hidden="true"></span>
-                        <span>DOWNLOAD</span>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-xs-4" @click="takeSnapshot" id="button">
+              <div class="col-xs-8" @click="takeSnapshot" id="button" v-show="!videoPhotoToggle">
                 <div class="centerBlock">
                     <div id="btn-record-start" 
                          @click="recordToggle">
@@ -180,7 +247,37 @@
                 </div>
             </div>
 
-            <div class="col-xs-4" @click="topbarStateToggle" id="button">
+            <div class="col-xs-4" id="button" @click="fileDownload">
+                <div class="centerBlock">
+                    <div id="btn-video-download">
+                        <span class="glyphicon glyphicon-save" id="record-icon" aria-hidden="true"></span>
+                        <span>DOWNLOAD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         
+             <div id="download-popup" v-show="showVideo">
+                  <div class="row">
+                            <div class="col-xs-2" id="button" @click="closeFileDownload">
+                            <div id="exit-button">
+                                <span>X</span>
+                            </div>
+                        </div>
+                          </div>
+              <ul id="download-popup-list">
+                <li v-for="videoDir in videoDirs">
+                  <a :href="videoDownloadDir+videoDir" target="_self">{{videoDir}}</a>
+                </li>
+              </ul>
+              </div>
+         
+
+        <div class="row">
+          
+
+            <div class="col-xs-8" @click="topbarStateToggle" id="button">
                 <div class="centerBlock">
                     <div id="btn-record-start" 
                          @click="recordToggle">
@@ -205,20 +302,7 @@
             </div>
         </div>
 
-        <div id="download-popup" v-show="showVideo">
-               <div class="row">
-                        <div class="col-xs-2" id="button" @click="closeFileDownload">
-                        <div id="exit-button">
-                            <span>X</span>
-                        </div>
-                    </div>
-                     </div>
-          <ul id="download-popup-list">
-            <li v-for="videoDir in videoDirs">
-              <a :href="videoDownloadDir+videoDir" target="_blank">{{ videoDir}}</a>
-            </li>
-          </ul>
-          </div>
+       
 
        
         <!-- </div> -->
@@ -231,12 +315,12 @@
                         <span>720P(1280*720)</span>
                     </div>
                 </div>
-                <div class="col-xs-4" id="button" @click="changeVideoReso('resolve=1&rotate=0')">
+                <div class="col-xs-4" id="button" @click="changeVideoReso('resolve=2&rotate=0')">
                     <div class="centerBlock">
                         <span>VGA(640*480)</span>
                     </div>
                 </div>
-                <div class="col-xs-4" id="button" @click="changeVideoReso('resolve=2&rotate=0')">
+                <div class="col-xs-4" id="button" @click="changeVideoReso('resolve=1&rotate=0')">
                     <div class="centerBlock">
                         <span>QVGA(320*240)</span>
                     </div>
@@ -248,17 +332,44 @@
                         <span>720P(180°) <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></span>
                     </div>
                 </div>
-                <div class="col-xs-4" id="button" @click="changeVideoReso('resolve=1&rotate=1')">
+                <div class="col-xs-4" id="button" @click="changeVideoReso('resolve=2&rotate=1')">
                     <div class="centerBlock">
                         <span>VGA(180°) <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></span>
                     </div>
                 </div>
-                <div class="col-xs-4" id="button" @click="changeVideoReso('resolve=2&rotate=1')">
+                <div class="col-xs-4" id="button" @click="changeVideoReso('resolve=1&rotate=1')">
                     <div class="centerBlock">
                         <span>QVGA(180°) <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></span>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-3" id="button">
+                    <div class="centerBlock">
+                        <span>10fps</span>
+                    </div>
+                </div>
+
+                  <div class="col-xs-3" id="button">
+                    <div class="centerBlock">
+                        <span>15fps</span>
+                    </div>
+                </div>
+                 <div class="col-xs-3" id="button">
+                    <div class="centerBlock">
+                        <span>20fps</span>
+                    </div>
+                </div>
+                 <div class="col-xs-3" id="button">
+                    <div class="centerBlock">
+                        <span>25fps</span>
+                    </div>
+                </div>
+                
+            </div>
+
+           
+
         </div>
         <div class="row" id="station-block" v-if='station_show'>
             <div class="popupBlock">
@@ -954,30 +1065,34 @@
         el: '#app',
         data: {
             topbarToggle:true,
+            videoPhotoToggle:true,
             recordToggle: true,
             station_show: false,
-            RobotControlToggle: false,
+            RobotControlTogglePC: false,
+            RobotControlToggleMobile:false,
             showVideo:false,
             screenResoToggle:false,
             //true for ad, false for ap
             wifiModes: true,
             wifiAlertState: false,
             wifiAlertMessage: "",
-            liveviewURL:'http://'+window.location.hostname + ':8080',
-            wifiAdAlert: "connecting to WIFI router, this IP address will change to: (curren IP of Livera)/mmc/www/index.html \n Notice: press livera reset button for 3 second will roll back to default AP mode!",
-            wifiInputAlert: "please fill up the form",
-            apWifiInputAlert:"default wifi activated, please check your wifi list",
+            // liveviewURL:'http://'+window.location.hostname + ':8080' + '/mjpg',
+            liveviewURL:'http://'+window.location.hostname + ':8080' ,
+            wifiAdAlert: 'connecting to WIFI router, this IP address will change to: (curren IP of Livera)/mmc/www/index.html \n Notice: press livera reset button for 3 second will roll back to default AP mode!',
+            wifiInputAlert: 'please fill up the form',
+            apDefaultWifiInputAlert:'default wifi activated, please check your wifi list',
+            apWifiInputAlert:'Customer wifi activated, please check your wifi list',
             // currentWifiMode:'ad',
             xhr:null,
             //ajax web API
             startRecordAPI: '/hicat/record?save=1',
             stopRecordAPI: '/hicat/record?save=0',
             fileDownloadAPI: '/hicat/files',
-            videoDownloadDir:window.location.hostname+'mmc/video/',
+            videoDownloadDir:'http://'+window.location.hostname+'/mmc/video/',
             videoResoAPI: '/hicat/setCamera?',
             snapshotCounts:0,
             snapshotAPI: '/hicat/snapshot?name=',
-            snapshotStoreDir:'/www/mmc/video/',
+            snapshotStoreDir:'/www/mmc/video',
             //switch mode from Mjpg to RTSP
             //PS:could not record video or snapshot under Mjpg mode
             //RTSP:mode=0 Mjpg:mode=1
@@ -997,6 +1112,7 @@
             topbarStateToggle:function(){
        
                 this.topbarToggle = !this.topbarToggle;
+                this.videoPhotoToggle=!this.videoPhotoToggle;
 
                 if (this.topbarToggle == false) {
                   var xhr = new XMLHttpRequest()
@@ -1023,7 +1139,34 @@
                 return this.station_show = !this.station_show;
             },
             RobotControlStateToggle: function() {
-                 this.RobotControlToggle = !this.RobotControlToggle;
+              function detectmob() { 
+                 if( navigator.userAgent.match(/Android/i)
+                 || navigator.userAgent.match(/webOS/i)
+                 || navigator.userAgent.match(/iPhone/i)
+                 || navigator.userAgent.match(/iPad/i)
+                 || navigator.userAgent.match(/iPod/i)
+                 || navigator.userAgent.match(/BlackBerry/i)
+                 || navigator.userAgent.match(/Windows Phone/i)
+                 ){
+                    return true;
+                  }
+                 else {
+                    return false;
+                  }
+                }
+
+                if (detectmob()) {
+                    vm.RobotControlToggleMobile = !vm.RobotControlToggleMobile;
+                    vm.RobotControlTogglePC = false;
+                    console.log('mobilepopup!');
+                }else{
+                    vm.RobotControlTogglePC = !vm.RobotControlTogglePC;
+                    vm.RobotControlToggleMobile = false;
+                    console.log('pcpopup!');
+                }
+
+
+                
                  vm.WebSocketURL = 'ws://' + window.location.hostname+':7681'
 
                  if (vm.RobotControlToggle == true) {
@@ -1032,7 +1175,7 @@
                       console.log('ws connection opened:'+WebSocketURL);
                    }
                  }else{
-                  // vm.ws.close();
+                   vm.ws.close();
                  }
             },
             RobotCommand:function(command){
@@ -1080,13 +1223,14 @@
               return vm.showVideo = false;
             },
             fileDownload: function() {
-              if(vm.showVideo == true){
-                vm.videoDir = null;
+
+                 if(vm.showVideo == true){
+                     vm.videoDir = [];
                 return vm.showVideo = false;
               }
+             
                 console.log("see click!");
                 var xhr = new XMLHttpRequest();
-            //     var self = this;
 
                 xhr.open('GET', this.fileDownloadAPI, true);
                 // this.ajaxRequest(this.fileDownloadAPI);
@@ -1097,10 +1241,12 @@
                      var rawFileMessage = JSON.parse(xhr.responseText);
                      for (var i = 0; i < rawFileMessage.files.length; i++) {
                        vm.videoDirs.push(rawFileMessage.files[i].name);
+                        }
+                       console.log(vm.videoDirs);
+                       return vm.showVideo = true;
                      }
-                    console.log(vm.videoDirs);
-                    return vm.showVideo = true;
-                }
+                    
+                
                 xhr.send();
             },
             takeSnapshot:function(){
@@ -1124,12 +1270,12 @@
               return this.screenResoToggle = !this.screenResoToggle;
             },
             changeVideoReso: function(updateReso) {
-                console.log("see click!");
+                console.log("see click! receive="+updateReso);
                 // this.ajaxRequest(this.videoResoAPI + updateReso);
                 var xhr = new XMLHttpRequest();
             //     var self = this;
 
-                xhr.open('GET', this.videoResoAPI, true);
+                xhr.open('GET', this.videoResoAPI+updateReso, true);
                 xhr.onload = function(){
                   var answer = JSON.parse(xhr.responseText);
                   console.log(answer.result);
@@ -1146,22 +1292,28 @@
             },
             apModeStart:function(){
               console.log('see click!');
+             var xhr = new XMLHttpRequest();
               if (this.wifiName == null) {
                 vm.wifiAlertState = true;
-                return vm.wifiAlertMessage = vm.apWifiInputAlert;
+                 vm.wifiAlertMessage = vm.apDefaultWifiInputAlert;
+                 var Num=''; 
+
+                    for(var i=0;i<6;i++) 
+                    { 
+                    Num+=Math.floor(Math.random()*10); 
+                    } 
+                 var currentWifiInfo = this.apModeAPI+ "ssid=hicat"+ Num +"&password=88888888";
+                 console.log('default');
               }else{
-              var currentWifiInfo =this.stationModeAPI+ "ssid="+this.wifiName+"&password="+this.wifiPassward;
+              var currentWifiInfo =this.apModeAPI+ "ssid="+this.wifiName+"&password="+this.wifiPassward;
               console.log('wifiAPI:'+currentWifiInfo);
-             
-             var xhr = new XMLHttpRequest();
-
-
-                xhr.open('GET', currentWifiInfo, true);
+              }
+               xhr.open('GET', currentWifiInfo, true);
            
                 xhr.send();
                 vm.wifiAlertState = true;
-                return vm.wifiAlertMessage = vm.wifiAdAlert;
-              }
+                vm.wifiAlertMessage = vm.apWifiInputAlert;
+
             },
             stationModeStart:function(){
               console.log('see click!');

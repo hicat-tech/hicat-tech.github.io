@@ -44,20 +44,28 @@ var xhr = new XMLHttpRequest()
 成功：{"result":"OK"}    
 失败：{"result":"ERROR"}
 4./hicat/files
+
+http://192.168.1.1/mmc/video/xxxxx.264
 成功：{"result":"OK","files":["name":"xxxxx","name":"xxxxx"]}    
 失败：{"result":"ERROR"}
 5./hicat/record?save=1
  ./hicat/record?del=xxxxxxxx.h264
 成功：{"result":"OK"}    
 失败：{"result":"ERROR"}
-6./hicat/setCamera?resolve=1&rotate=0
+// 6./hicat/setCamera?resolve=1&rotate=0
+// 成功：{"result":"OK"}    
+// 失败：{"result":"ERROR"}
+6./hicat/setCamera?resolve=1&rotate=0&fps=20
 成功：{"result":"OK"}    
 失败：{"result":"ERROR"}
 7./hicat/test
 成功：{"result":"OK"}    
-8./hicat/snapshot?name=xxx.jpg&dir=/dddd/
+//only work under mjpg mode
+8./hicat/snapshot?name=xxx.jpg&dir=/dddd//www/mmc/video/
 成功：{"result":"OK"}    
 注意ddd是绝对路径，而且后面要有/
 建议保存在/www/mmc/video/下面，这样用/hicat/files也可以查出来，或者删掉
+
 9./hicat/videoServer?mode=0  0-rtspserver/1-libhisiv_test
 设置videoServer的类型
+

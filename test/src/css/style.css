@@ -77,12 +77,31 @@
 #exit-button {
     display: table;
     font-size: 1.5em;
+    /*text-align: center;*/
     margin: 10px auto;
 }
 
 #download-popup-list, li{
 	padding: 10px;
-	font-size: 30px;
+	font-size: 1.2em;
+}
+
+#download-popup{
+	height: 320px;
+	overflow: scroll;
+}
+
+#popupBlock-fps{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#fps-button{
+	padding: 10px;
+}
+
+.input-group-addon{
+	margin: -10px;
 }
 
 /*[class*="col-xs-8"]:active {
