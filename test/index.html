@@ -344,25 +344,34 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-3" id="button">
+                <div class="col-xs-3" id="button" @click="changeVideoFps('&fps=10')">
                     <div class="centerBlock">
                         <span>10fps</span>
                     </div>
                 </div>
 
-                  <div class="col-xs-3" id="button">
+                  <div class="col-xs-3" id="button" @click="changeVideoFps('&fps=15')">
                     <div class="centerBlock">
                         <span>15fps</span>
                     </div>
                 </div>
-                 <div class="col-xs-3" id="button">
+                 <div class="col-xs-3" id="button" @click="changeVideoFps('&fps=20')">
                     <div class="centerBlock">
                         <span>20fps</span>
                     </div>
                 </div>
-                 <div class="col-xs-3" id="button">
+                 <div class="col-xs-3" id="button" @click="changeVideoFps('&fps=25')">
                     <div class="centerBlock">
                         <span>25fps</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12" id="button" @click="sendVideoReso">
+                        <div class="centerBlock">
+                            <span><strong> SENT!</strong></span> 
+                            <span>({{defaultVideoReso}}+{{defaultVideoFps}})</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -1080,9 +1089,10 @@
             liveviewURL:'http://'+window.location.hostname + ':8080' ,
             wifiAdAlert: 'connecting to WIFI router, this IP address will change to: (curren IP of Livera)/mmc/www/index.html \n Notice: press livera reset button for 3 second will roll back to default AP mode!',
             wifiInputAlert: 'please fill up the form',
-            apDefaultWifiInputAlert:'default wifi activated, please check your wifi list',
+            apDefaultWifiInputAlert:'default wifi activated, the current connection breaked, please rejoin and check your wifi list with the new AP name',
             apWifiInputAlert:'Customer wifi activated, please check your wifi list',
             // currentWifiMode:'ad',
+            apWifiCorrection:'please give a 8 figure or above passward!',
             xhr:null,
             //ajax web API
             startRecordAPI: '/hicat/record?save=1',
@@ -1090,6 +1100,8 @@
             fileDownloadAPI: '/hicat/files',
             videoDownloadDir:'http://'+window.location.hostname+'/mmc/video/',
             videoResoAPI: '/hicat/setCamera?',
+            defaultVideoReso:'resolve=2&rotate=0',
+            defaultVideoFps:'&fps=20',
             snapshotCounts:0,
             snapshotAPI: '/hicat/snapshot?name=',
             snapshotStoreDir:'/www/mmc/video',
@@ -1169,13 +1181,17 @@
                 
                  vm.WebSocketURL = 'ws://' + window.location.hostname+':7681'
 
-                 if (vm.RobotControlToggle == true) {
-                   vm.ws = new WebSocket(vm.WebSocketURL);
-                   vm.ws.onopen=function(event){
-                      console.log('ws connection opened:'+WebSocketURL);
-                   }
-                 }else{
-                   vm.ws.close();
+                vm.ws = new WebSocket(vm.WebSocketURL);
+                
+                vm.ws.onopen=function(event){
+                      console.log('ws connection opened:'+this.WebSocketURL);
+                  }
+
+
+
+                 if (vm.RobotControlToggle != true) {
+                 // vm.ws.close();
+                   
                  }
             },
             RobotCommand:function(command){
@@ -1272,15 +1288,24 @@
             changeVideoReso: function(updateReso) {
                 console.log("see click! receive="+updateReso);
                 // this.ajaxRequest(this.videoResoAPI + updateReso);
-                var xhr = new XMLHttpRequest();
+                this.defaultVideoReso = updateReso;
+            },
+            changeVideoFps:function(updateFps){
+                 console.log("see click! receive="+updateFps);
+                this.defaultVideoFps = updateFps;
+            },
+            sendVideoReso:function(){
+                 var xhr = new XMLHttpRequest();
             //     var self = this;
 
-                xhr.open('GET', this.videoResoAPI+updateReso, true);
+                xhr.open('GET', this.videoResoAPI+this.defaultVideoReso+this.defaultVideoFps, true);
                 xhr.onload = function(){
                   var answer = JSON.parse(xhr.responseText);
                   console.log(answer.result);
                 }
                 xhr.send();
+
+
             },
             adModeSwitch:function(){
               vm.wifiAlertState = false;
@@ -1293,7 +1318,7 @@
             apModeStart:function(){
               console.log('see click!');
              var xhr = new XMLHttpRequest();
-              if (this.wifiName == null) {
+              if (this.wifiName == null && this.wifiPassward == '' ) {
                 vm.wifiAlertState = true;
                  vm.wifiAlertMessage = vm.apDefaultWifiInputAlert;
                  var Num=''; 
@@ -1304,6 +1329,13 @@
                     } 
                  var currentWifiInfo = this.apModeAPI+ "ssid=hicat"+ Num +"&password=88888888";
                  console.log('default');
+                    return xhr.open('GET', currentWifiInfo, true);
+
+
+              } else if (this.wifiPassward.length <= 8) {
+                    vm.wifiAlertState = true;
+                    return vm.wifiAlertMessage = vm.apWifiCorrection;
+
               }else{
               var currentWifiInfo =this.apModeAPI+ "ssid="+this.wifiName+"&password="+this.wifiPassward;
               console.log('wifiAPI:'+currentWifiInfo);
