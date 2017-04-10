@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="shortcut icon" href="./img/favicon.ico">
+
+    <title>LIVERA Documentation</title>
+
+    <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="./css/base.css" rel="stylesheet">
+    <link href="./css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/highlight.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body class="homepage" >
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href=".">LIVERA Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="active">
+                        <a href=".">Document</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="api/">API Guide</a>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li class="disabled">
+                        <a rel="next" >
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="api/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="first-level active"><a href="#quick-startuser-manual">Quick Start/User Manual</a></li>
+        
+            <li class="second-level"><a href="#hardware">Hardware</a></li>
+            
+                <li class="third-level"><a href="#livera">Livera</a></li>
+            
+                <li class="third-level"><a href="#motor-driver">Motor Driver</a></li>
+            
+                <li class="third-level"><a href="#the-robot-kit-assembly-guide">The Robot kit Assembly Guide</a></li>
+            
+        
+            <li class="second-level"><a href="#software">Software</a></li>
+            
+                <li class="third-level"><a href="#firmware">Firmware</a></li>
+            
+                <li class="third-level"><a href="#android">Android</a></li>
+            
+                <li class="third-level"><a href="#web-app">Web app</a></li>
+            
+        
+            <li class="second-level"><a href="#example-code">Example Code</a></li>
+            
+                <li class="third-level"><a href="#image-capturing">Image Capturing</a></li>
+            
+                <li class="third-level"><a href="#robot-kit">Robot Kit</a></li>
+            
+        
+            <li class="second-level"><a href="#advance">Advance</a></li>
+            
+                <li class="third-level"><a href="#api-guide">API GUIDE</a></li>
+            
+                <li class="third-level"><a href="#hi3518ev100-sdk">HI3518EV100 SDK</a></li>
+            
+                <li class="third-level"><a href="#opencv">openCV</a></li>
+            
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h2 id="quick-startuser-manual">Quick Start/User Manual</h2>
+<p><font size=40><strong>What is Livera</strong></font></p>
+<p><img alt="Image" src="./img/introIMG1.jpg" /></p>
+<p>Welcome to start the new adventure with Hicat!! Happy hacks. :p</p>
+<p>In a nutshell, Livera by Team HiCat is an open source hardware project which aims to bring machine vision features to the <code>Arduino</code> community. It is also a good platform for building <code>visual driven robotics.</code></p>
+<p>We've provided libraries which contain <code>machine vision</code> related APIs such as:</p>
+<ul>
+<li>720hd video and photo capturing&amp;processing</li>
+<li>OpenCV enabled Color-Sensitive and Object-Tracking.</li>
+<li>Wifi enabled wireless control (this can work with the iot!) </li>
+<li>Image capturing and data recording onto the onboard sd card </li>
+<li>Mobile observation and manipulation from our custom apps( web-based and native)</li>
+<li>Programmable and open source.</li>
+</ul>
+<p><strong>what Livera could do:</strong></p>
+<p><img alt="Image" src="./img/robotIMG2.jpg" /></p>
+<p><strong>Future development:</strong></p>
+<p>It is always exciting to think about the future, as for the buzz of AI recently, undeniably it is the future.</p>
+<p>When we saw the article of How a <a href="https://cloud.google.com/blog/big-data/2016/08/how-a-japanese-cucumber-farmer-is-using-deep-learning-and-tensorflow.html">Japanese cucumber farmer is using deep learning to sort cucumbers.</a> we think Livera should be best machine vision front-end part for <code>image capturing and openCV pre-processing</code>.</p>
+<p>With the natural language virtual assistant and cloud deep learning platfrom, we could just teach the robot how to perform task by speaking, or let him learn by watching, that will be really awesome, like people could finally owns their own real world <code>R2D2</code> or <code>BB8</code>.</p>
+<p>In conclusion:</p>
+<ul>
+<li>Theme based advance <code>robotic kit</code>.</li>
+<li>More advance image capturing and processing capability</li>
+<li>Natural language virtual assitant</li>
+<li>Image streaming and processing <code>cloud</code> </li>
+</ul>
+<p><font size=40><strong>User Manual</strong></font></p>
+<p><img alt="Image" src="" /></p>
+<p><strong>Power:</strong> LIVERA allows mulitpul ways of power supply</p>
+<ol>
+<li>3.7V lipo battery (No higher voltage)</li>
+<li>USB cable (2.0)</li>
+<li>I/O port</li>
+</ol>
+<p><strong>Hock Up Camera Module:</strong> The Livera core package contains 3 main conponent, 1. Livera Board 2. Camera Module 3. Extendable Cable.</p>
+<p>You could choose to directly plug in the Camera Module on to Livera Board, or use extendable cable to extend the Camera Module in order to build Robot.</p>
+<p><strong>Connect to Livera:</strong> Power up Livera, give a few second to boot, the WIFI access point hostname <code>hicat_xxxxxx</code> should show up on your PC/MOBILE's wifi list. The default wifi password is: <code>88888888</code></p>
+<p>Once you connected to LIVERA, you could Telnet()</p>
+<p><strong>Test Video Feature:</strong> LIVERA has two video streaming mode <code>RTSP/MJPEG</code>, RTSP stands for advence <code>H.264 raw video streaming</code> which works well with our Android app or any video Player which accepted RTSP streaming protocol. MJPEG would be a <code>WEB friendly</code> video format.</p>
+<p>Once you successfully boot up Livera and accessing into the WIFI, you can connect to the web app we built to test the board function.</p>
+<p>Go to web page <code>192.168.1.1/www/mmc/webapp/index.html</code> or the simplify version web page <code>192.168.1.1</code>. </p>
+<p>Once the web page show up, hit the <code>LiveView</code> button to get video stream from Livera. </p>
+<p><strong>Access into Linux(3518E):</strong> Livera accept <code>telnet</code> connections, when you connected to Livera with WIFI, you could open up your terminal, type:</p>
+<pre><code>telnet 192.168.1.1       //if you let the board connected to the router you should find the correct IP address
+
+//User:root
+//passward:(hit return directly)
+
+cd /hicat/   //firmware directory
+./launch.sh   //Main script for main operation: video setting/mount sd card
+
+cd /hicat/www/mmc  //SD card directory
+</code></pre>
+
+<h3 id="hardware"><font size=60><strong>Hardware</strong></font></h3>
+<h4 id="livera"><font size=40><strong>Livera</strong></font></h4>
+<h4 id="motor-driver"><font size=40><strong>Motor Driver</strong></font></h4>
+<h4 id="the-robot-kit-assembly-guide"><font size=40><strong>The Robot kit Assembly Guide</strong></font></h4>
+<h3 id="software"><font size=60><strong>Software</strong></font></h3>
+<h4 id="firmware"><font size=40><strong>Firmware</strong></font></h4>
+<p><strong>How to burn the firmware to flash</strong></p>
+<p>you must have a hicat board with a uboot already burned.</p>
+<p>then connect the UART0 on the ARM9 Hisiv chip. and then use the command as below[recomendly using Hyper Terminal to finish this]:</p>
+<pre><code>loady 0x82000000
+</code></pre>
+
+<p>then send file on Hyper Terminal with xmodern protocal. choose the uImage file under https://github.com/9crk/libhisiv/opt/</p>
+<pre><code>sf probe 0
+sf erase 0x100000 0x300000
+sf write 0x82000000 0x100000 0x300000    
+loady 0x82000000
+</code></pre>
+
+<p>then send the rootfs file to the board.</p>
+<pre><code>sf erase 0x400000 0xC00000
+sf write 0x82000000 0x400000 0x500000
+setenv bootargs 'mem=32M console=ttyAMA0,115200 root=/dev/mtdblock2 rootfstype=jffs2 mtdparts=hi_sfc:1M(boot),3M(kernel),12M(rootfs)'
+setenv bootcmd 'sf probe 0;sf read 0x82000000 0x100000 0x300000;bootm 0x82000000'
+saveenv
+</code></pre>
+
+<p>then reboot the board or execute 'reset' command.</p>
+<p><strong>How to use opencv Demo</strong>
+1. clone this repo
+2. then install the compiler
+3. compile the apps under 'app' dir with <code>./build.sh</code>
+4. copy the app dir to the board
+5. copy the opt/opencvlib dir to the board at /www/mmc/opencv/opencvlib
+6. <code>cd app &amp;&amp; source env.sh</code>
+7. <code>execute './capture'</code> to capture an image named 'myImage.jpg'
+8. <code>execute './match model.jpg'</code> to find the object model.jpg in the camera.
+9. then you can browser the result hi.jpg on http://192.168.1.1/mmc/opencv/app/hi.jpg</p>
+<p><strong>About rtspserver and libhisiv.a</strong></p>
+<p>rtspserver have two demo:
+<em> one is modified from live555 project. ( live555MediaServer )
+ * source code is in https://bitbucket.org/zhouhua/hicat_rtspserver
+ * play Address: rtsp://192.168.1.1/hicat.264
+</em> one is a http-rtp based program. with only binary file provided. ( http-rtpServer )
+ * play Address: http://192.168.1.1/cgi-bin/video.sdp but must with zwebs running first.</p>
+<p>you can rename any of it as 'rtspserver',then it will be run in the next boot. or run /hicat/launch.sh restart to restart all services.
+libhisiv.a contains all the camera function.as below:</p>
+<pre><code>extern int venc_exit(int n);//0 
+extern int venc_init(int resolve);//0:720P 1:QVGA 2:VGA
+extern int venc_requestIDR();
+extern int venc_getFrame(char* buffer,int *datalen);//get h264 frame data.
+extern int venc_rotate(int dir);//0:no rotate 2:180 digree rotate.
+extern int venc_getYUV(int mode,char*buff);//get YUV data.
+</code></pre>
+
+<p><strong>How to install software pack</strong></p>
+<ol>
+<li>execute 'lrz' command to send libhicat/opt/hi_sd.sh into the board (any where)</li>
+<li>format the sd card with fat32 format in default param. or use mkfs.vfat on Linux OS</li>
+<li>then execute <code>chmod +x hi_sd.sh &amp;&amp; ./hi_sd.sh</code>, the board will reboot</li>
+</ol>
+<p><strong>How to upgrade</strong>
+1. Formating the SD card with vfat or fat32 mode.
+2. then copy the hicat2016xxxx.tar package to the SD card.
+3. press the reset button (RST_PBC)
+4. connect the power supply.
+5. wait for the board reset again.</p>
+<p><strong>What's more</strong>
+ <strong>zwebs</strong> https://9crk@bitbucket.org/zhouhua/hicat_zwebs.git</p>
+<p><strong>How to use programming with serial port on Hisiv</strong>
+ <strong>libSerial</strong> https://github.com/9crk/libSerial.git</p>
+<p><strong>Source Code</strong> can be view <a href="https://github.com/9crk/libhicat">here</a></p>
+<h4 id="android"><font size=40><strong>Android</strong></font></h4>
+<h4 id="web-app"><font size=40><strong>Web app</strong></font></h4>
+<p><img alt="Image" src="./img/webappIMG1.jpg" /></p>
+<p>The web app provides functions like Video recording, Live streaming, </p>
+<p>What an amazing feature about livera is it could <code>serve web pages</code> as web app thanks to the file streaming server, in Livera's demo, we've provided a single page web app which based on VUE.js, the app would work as Livera's command panel.</p>
+<p>The server also provide <code>REST API</code> which allows you to communicate with Livera through AJAX</p>
+<!-- #### __Arduino library__ -->
+
+<h3 id="example-code"><font size=60><strong>Example Code</strong></font></h3>
+<h4 id="image-capturing"><font size=40><strong>Image Capturing</strong></font></h4>
+<p><strong>1. Image capture within Arduino</strong></p>
+<pre><code class="c">
+    #include "hicat.h"
+
+    void setup()
+    {
+        hicat.begin();
+
+        char name[16] = "0.jpg";
+        for (int i = 0; i < 8; i++)
+        {
+            name[0] = '0' + i;
+            hicat.snapshot(name);
+
+            delay(10);
+        }
+    }
+
+    void loop()
+    {
+    }
+</code></pre>
+
+<h4 id="robot-kit"><font size=40><strong>Robot Kit</strong></font></h4>
+<pre><code class="c">
+
+    // hicat robot demo
+    // get SerialCommand library from https://github.com/hicat-tech/Arduino-SerialCommand
+
+    #include <Servo.h>
+    #include <SerialCommand.h>
+
+    int PWM1 = 9;     // control servo
+    int PWM_CE = 11;  // servo enable
+
+    int AIN1 = 4;  // control motor1
+    int AIN2 = 5;  // control motor1
+    int AIN3 = 6;  // control motor2
+    int AIN4 = 7;  // control motor2
+
+    int BIN3 = A2;  //control laser
+    int BIN4 = A3;  //control laser
+
+    Servo myservo;
+    SerialCommand sCmd;
+
+    uint8_t camera_angle = 120;
+    uint8_t camera_angle_range[] = {
+      60, 150
+    };
+    uint8_t laser_is_on = 0;
+
+    void setup() {
+      Serial.begin(115200);
+      Serial1.begin(115200);
+
+    //  while (!Serial);
+      Serial.println("----- Car ----");
+
+      // initialize the digital pin as an output.
+      pinMode(AIN1, OUTPUT);
+      pinMode(AIN2, OUTPUT);
+      pinMode(AIN3, OUTPUT);
+      pinMode(AIN4, OUTPUT);
+      pinMode(BIN3, OUTPUT);
+      pinMode(BIN4, OUTPUT);
+      digitalWrite(BIN3, LOW);  // turn off LASER
+      digitalWrite(BIN4, LOW);
+
+      pinMode(PWM_CE, OUTPUT);
+      myservo.attach(PWM1);
+      digitalWrite(PWM_CE, HIGH);
+      myservo.write(camera_angle);
+      digitalWrite(PWM_CE, LOW); //disable servo
+
+
+      // Setup callbacks for SerialCommand commands
+      sCmd.addCommand("laser", trigger_laser);
+      sCmd.addCommand("camera", adjust_camera);
+      sCmd.addCommand("motor", set_motor);
+      sCmd.setDefaultHandler(unrecognized);
+    }
+
+    // the loop routine runs over and over again forever:
+    void loop() {
+      sCmd.readSerial((Stream&)Serial1);
+    }
+
+    void trigger_laser()
+    {
+      if (laser_is_on) {
+        digitalWrite(BIN3, LOW);  // turn off LASER
+        laser_is_on = 0;
+        Serial.println("laser off");
+      }
+      else {
+        digitalWrite(BIN3, HIGH);  // turn on LASER
+        laser_is_on = 1;
+        Serial.println("laser on");
+      }
+    }
+
+    void adjust_camera()
+    {
+      char *param;
+
+      param = sCmd.next();
+      if (!strcmp(param, "down")) {
+        if (camera_angle < camera_angle_range[1]) {
+          camera_angle += 10;
+
+          digitalWrite(PWM_CE, HIGH);
+          myservo.write(camera_angle);
+          digitalWrite(PWM_CE, HIGH);
+        }
+      }
+      else if (!strcmp(param, "up")) {
+        if (camera_angle > camera_angle_range[0]) {
+          camera_angle -= 10;
+
+          digitalWrite(PWM_CE, HIGH);
+          myservo.write(camera_angle);
+          digitalWrite(PWM_CE, HIGH);
+        }
+      }
+
+      Serial.print("camera angle: ");
+      Serial.println(camera_angle);
+    }
+
+    void set_motor()
+    {
+      char *param;
+      int16_t left = 0;
+      int16_t right = 0;
+
+      param = sCmd.next();
+      if (param == NULL) {
+        return;
+      }
+      left = atoi(param);
+
+      param = sCmd.next();
+      if (param == NULL) {
+        return;
+      }
+      right = atoi(param);
+
+      Serial.print("motor ");
+      Serial.print(left);
+      Serial.print(" ");
+      Serial.println(right);
+
+
+      if (left > 30) {
+        analogWrite(AIN2, left);
+        digitalWrite(AIN1, LOW);
+      } else if (left < -30)  {
+        analogWrite(AIN2, 255 + left);
+        digitalWrite(AIN1, HIGH);
+      }
+      else {
+        digitalWrite(AIN1, LOW);
+        digitalWrite(AIN2, LOW);
+      }
+
+      if (right > 30) {
+        analogWrite(AIN3, right);
+        digitalWrite(AIN4, LOW);
+      }
+      else if (right < -30) {
+        analogWrite(AIN3, 255 + right);
+        digitalWrite(AIN4, HIGH);
+      }
+      else {
+        digitalWrite(AIN3, LOW);
+        digitalWrite(AIN4, LOW);
+      }
+
+    }
+
+
+    // This gets set as the default handler, and gets called when no other command matches.
+    void unrecognized(const char *command) {
+      Serial.println('?');
+    }
+
+
+</code></pre>
+
+<h3 id="advance"><font size=60><strong>Advance</strong></font></h3>
+<h4 id="api-guide"><font size=40><strong>API GUIDE</strong></font></h4>
+<p><strong>1.WEB API</strong></p>
+<p>The Web API contains a set of REST API in order to interact with LIVERA in a convenient way through <code>AJAX</code> or <code>URL</code>. </p>
+<p><strong>AJAX Example:</strong></p>
+<pre><code class="javascript">
+
+    var xhr = new XMLHttpRequest(){
+          xhr.open('GET', '/hicat/videoServer?mode=0', true)
+          xhr.onload = function() {
+            answer = JSON.parse(xhr.responseText)
+            console.log(answer1)            }
+         }
+        xhr.send()
+    }
+
+</code></pre>
+
+<p>1.<strong>Set up Video Streaming Mode:</strong> This API allows you to swith between <code>RTSP</code> and <code>MJPEG</code> streaming mode, be careful that <code>Video Record API</code> only works under <code>RTSP Mode</code>, and <code>Screen Shot API</code> only works under <code>MJEPG Mode</code>.</p>
+<pre><code>/hicat/videoServer?mode=0
+</code></pre>
+
+<p><code>mode=0</code>: RTSP Server Start
+<code>mode=1</code>: MJPEG Mode</p>
+<p>2.<strong>Station Mode</strong>: Let Livera link to local wifi router</p>
+<pre><code>/hicat/stationMode?ssid=xxxxx&amp;password=xxxxxxx
+</code></pre>
+
+<p>return messages:
+<code>success</code>: none return
+<code>error</code>:{"result":"ERROR"}</p>
+<p>3.<strong>WIFI Access Point</strong>: Make Livera to AP mode</p>
+<pre><code>/hicat/apMode?ssid=xxxxx&amp;password=xxxxxxx
+</code></pre>
+
+<p>return messages(object):
+<code>success</code>: none return
+<code>error</code>：{"result":"ERROR"}</p>
+<p>4.<strong>Set Livera time</strong>: Synchronous time with Livera, the time also affect to the default video name. </p>
+<pre><code>/hicat/setTime?time=%d-%d-%d-%d-%d-%d
+</code></pre>
+
+<p><code>Example</code>: /hicat/setTime?time=2018-09-09-01-01-01
+<code>success</code>：{"result":"OK"}  <br />
+<code>error</code>：{"result":"ERROR"}</p>
+<p>5.<strong>Get Video Download Links</strong>: This API will return a JASON format(<code>{"result":"OK","files":["name":"xxxxx","name":"xxxxx"]}</code>) message about all the file within <code>video folder</code> in SD Card. Once you get the fileName you could just go to this url <code>http://192.168.1.1/mmc/video/xxxxx.264</code> to download it(might figure your IP address under station mode).</p>
+<pre><code>/hicat/files
+</code></pre>
+
+<p><code>success</code>:{"result":"OK","files":["name":"xxxxx","name":"xxxxx"]}  <br />
+<code>error</code>:{"result":"ERROR"}</p>
+<p>6.<strong>Video Record</strong>: This API allows you to record and delete the video and auto save into the default <code>video</code> folder in SD card.</p>
+<pre><code>/hicat/record?save=1
+/hicat/record?del=xxxxxxxx.h264
+</code></pre>
+
+<p><code>save=1</code>: start recording
+<code>save=0</code>: stop recording and save
+<code>del=xxxxxxxx.h264</code>: delete xxxxxxxx.h264
+<code>success</code>：{"result":"OK"}  <br />
+<code>error</code>：{"result":"ERROR"}</p>
+<p>7.<strong>Video Setting</strong>: Switch video angle, video resolution and video fps.</p>
+<pre><code>/hicat/setCamera?resolve=1&amp;rotate=0&amp;fps=20
+</code></pre>
+
+<p><code>success</code>：{"result":"OK"}  <br />
+<code>error</code>：{"result":"ERROR"}</p>
+<p>//only work under mjpg mode</p>
+<p>8.<strong>Snapshot</strong>: snap shot form one of the frame form MJPEG stream. We suggest to make the direction to /www/mmc/video/ coz the photo info could be receive under <code>/hicat/files</code> API.</p>
+<pre><code>/hicat/snapshot?name=xxx.jpg&amp;dir=/www/mmc/video/
+</code></pre>
+
+<p><code>success</code>：{"result":"OK"}    </p>
+<p>9.<strong>For test</strong>: test api, do nothing but test.</p>
+<pre><code>/hicat/test
+</code></pre>
+
+<p><code>success</code>：{"result":"OK"}   </p>
+<p><strong>2.Embedded Linux API</strong></p>
+<p>Detail information could be view under our github <a href="https://github.com/9crk/libhicat/blob/master/include/libhisiv.h">libhicat</a>, There are instructions guide you through development tools set up and workflow, please have a look.</p>
+<pre><code>#ifndef _LIBHISIV_H_
+#define _LIBHISIV_H_
+
+#ifdef __cplusplus 
+extern &quot;C&quot; { 
+#endif
+int venc_exit(int n);
+int venc_init(int resolve);//0:720P 1:QVGA(320*240) 2:VGA(640*480)
+int venc_init_more(int resolve,int mode,int fps);//resolve: 0/1/2  1280*720/320*240/640*480  mode: 0/1 H264/MJPEG
+int venc_requestIDR();//request IDR frame
+int venc_getFrame(char* buffer,int *datalen,int *pts,int *type);
+int venc_snap(char* buff,int xRes,int yRes);
+int venc_getYUV(int mode,char*buff);//mode=0 Y  mode=1 UV mode = 3 YUV420(SP)
+int venc_rotate(int dir);
+
+//for audio
+extern int aenc_init(int mode);// 0/1 PT_LPCM/AAC/
+extern int aenc_getFrame(char* buff);
+extern int aenc_exit();
+//jpeg to http
+extern int libyuvdist_startYuvDistService(int port);
+extern int libyuvdist_updateYuv(int iHandle,char* data,int len,int seq,unsigned long timeStamp);
+extern int libyuvdist_stopYuvDistService(int iHandle);
+extern int libyuvdist_setSettingCallback(int iHandle,int func);//int func(int resX,int resY,int fps)
+
+#ifdef __cplusplus 
+}
+#endif
+#endif
+</code></pre>
+
+<p><strong>3.Arduino Libray API</strong></p>
+<p>The Arduino library wraps the web api, using serial communication and curl to communicate and send command to the video core(HI3518E). There are also example codes could be find in <a href="https://github.com/hicat-tech/hicat_arduino_library">github</a></p>
+<pre><code>#ifndef _HICAT_H_
+#define _HICAT_H_
+
+#include &lt;Arduino.h&gt;
+
+class HiCat
+{
+public:
+    HiCat();
+    int begin(void);
+
+    /**
+     * Take a picture
+     *
+     * @param file_name     picture name
+     * @return 0 - OK, otherwise - error code
+     */
+    int snapshot(const char *file_name);
+
+    /**
+     * Start to record a video which is saved at /www/mmc/video/
+     *
+     * @return 0 - OK, otherwise - error code
+     */
+    int record();
+
+    /**
+     * Stop to record a video
+     *
+     * @return 0 - OK, otherwise - error code
+     */
+    int stop_recording();
+
+    /**
+     * Set camera format
+     *
+     * @param resolution    0 - 1280*720, 2 - 640*480, 1 - 320*240
+     * @param rotation      0 - no rotation, 1 - 180 degree rotation
+     * @param fps           frame per secord from 1 to 25
+     * @return 0 - OK, otherwise - error code
+     */
+    int set_camera(int resolution, int rotation, int fps);
+
+    /**
+     * Set Wi-Fi mode
+     *
+     * @param mode  0 - AP mode, 1 - Station mode
+     * @param ssid  SSID
+     * @param password  password
+     * @return 0 - OK, otherwise - error code
+     */
+    int set_wifi(int mode, const char *ssid, const char *password);
+
+    /**
+     * Run a shell command
+     *
+     * @param command   shell command
+     * @return 0 - OK, otherwise - error code
+     */
+    int run(const char *command);
+
+private:
+    void prepare_web_command();
+    int read_result();
+};
+
+extern HiCat hicat;
+
+
+#endif // _HICAT_H_
+</code></pre>
+
+<h4 id="hi3518ev100-sdk"><font size=40><strong>HI3518EV100 SDK</strong></font></h4>
+<p><strong>Content within SDK:</strong></p>
+<ul>
+<li>linux</li>
+<li>file system </li>
+<li>Hi3518E Documentation/Hardware design reference</li>
+<li><strong>download address:</strong> <a href="http://pan.baidu.com/s/1c1qOQ6O">download link</a>  <strong>verifycode:</strong> <code>kspc</code>   <strong>decode password:</strong> <code>lk87612umzvcb01qqsalv</code></li>
+</ul>
+<h4 id="opencv"><font size=40><strong>openCV</strong></font></h4>
+<p>The way To do <code>black-line tracking.</code></p>
+<p><strong>1.check out the files.</strong> </p>
+<pre><code>~/libhicat/app$ ls__
+
+build.sh capture.cpp hi.html match model2.jpg myImage.jpg capture env.sh hi.jpg match.cpp model.jpg
+</code></pre>
+
+<p><strong>2.copy capture.cpp as a demo</strong></p>
+<pre><code>cp capture.cpp lineTrack.cpp
+</code></pre>
+
+<p><strong>3.modify build.sh, add content below</strong></p>
+<pre><code>arm-hisiv100nptl-linux-g++ lineTrack.cpp ../lib/libhisiv.a -I../include -lpthread -lm -o lineTrack
+</code></pre>
+
+<p><strong>4.compile</strong></p>
+<pre><code>./build.sh
+</code></pre>
+
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;unistd.h&gt;
+#include&quot;libhisiv.h&quot;
+int main(int argc,char* argv[])
+{
+
+char data[1280*720];
+int len;
+int i;
+len = venc_getYUV(0,data);
+
+    int x,y;
+    int result[10];
+for(i=0;i&lt;10;i++){
+    result[i] = 0;
+}
+for(i=0;i&lt;10;i++){
+    for(y=635;y&lt;(635+10);y++){
+        for(x=i*72;x&lt;(i+1)*72;x++){
+            result[i]+=data[y*1280+x];
+        }
+    }
+    result[i] = result[i]/(72*10);
+}
+for(i=0;i&lt;10;i++){
+    result[i] = 0;
+    printf(&quot;result = %d\n&quot;,result[i]);
+}
+}
+</code></pre></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="./js/jquery-1.10.2.min.js"></script>
+    <script src="./js/bootstrap-3.0.3.min.js"></script>
+    <script src="./js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '.';
+    </script>
+    <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
+    <script src="./js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>
+
+<!--
+MkDocs version : 0.16.0
+Build Date UTC : 2017-04-10 03:43:07
+-->

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>API Guide - LIVERA Documentation</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">LIVERA Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Document</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">API Guide</a>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="..">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a rel="prev" >
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="first-level active"><a href="#api-guide">API GUIDE</a></li>
+        
+            <li class="second-level"><a href="#1web-api">1.WEB API</a></li>
+            
+        
+            <li class="second-level"><a href="#2embedded-linux-api">2.Embedded Linux API</a></li>
+            
+        
+            <li class="second-level"><a href="#3arduino-libray-api">3.Arduino Libray API</a></li>
+            
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h3 id="api-guide"><strong>API GUIDE</strong></h3>
+<h4 id="1web-api"><strong>1.WEB API</strong></h4>
+<p>The Web API contains a set of REST API in order to interact with LIVERA in a convenient way through <code>AJAX</code> or <code>URL</code>. </p>
+<p><strong>AJAX Example:</strong></p>
+<pre><code class="javascript">
+
+    var xhr = new XMLHttpRequest(){
+          xhr.open('GET', '/hicat/videoServer?mode=0', true)
+          xhr.onload = function() {
+            answer = JSON.parse(xhr.responseText)
+            console.log(answer1)            }
+         }
+        xhr.send()
+    }
+
+</code></pre>
+
+<p>1.<strong>Set up Video Streaming Mode:</strong> This API allows you to swith between <code>RTSP</code> and <code>MJPEG</code> streaming mode, be careful that <code>Video Record API</code> only works under <code>RTSP Mode</code>, and <code>Screen Shot API</code> only works under <code>MJEPG Mode</code>.</p>
+<pre><code>/hicat/videoServer?mode=0
+</code></pre>
+
+<p><code>mode=0</code>: RTSP Server Start
+<code>mode=1</code>: MJPEG Mode</p>
+<p>2.<strong>Station Mode</strong>: Let Livera link to local wifi router</p>
+<pre><code>/hicat/stationMode?ssid=xxxxx&amp;password=xxxxxxx
+</code></pre>
+
+<p>return messages:
+<code>success</code>: none return
+<code>error</code>:{"result":"ERROR"}</p>
+<p>3.<strong>WIFI Access Point</strong>: Make Livera to AP mode</p>
+<pre><code>/hicat/apMode?ssid=xxxxx&amp;password=xxxxxxx
+</code></pre>
+
+<p>return messages(object):
+<code>success</code>: none return
+<code>error</code>：{"result":"ERROR"}</p>
+<p>4.<strong>Set Livera time</strong>: Synchronous time with Livera, the time also affect to the default video name. </p>
+<pre><code>/hicat/setTime?time=%d-%d-%d-%d-%d-%d
+</code></pre>
+
+<p><code>Example</code>: /hicat/setTime?time=2018-09-09-01-01-01
+<code>success</code>：{"result":"OK"}  <br />
+<code>error</code>：{"result":"ERROR"}</p>
+<p>5.<strong>Get Video Download Links</strong>: This API will return a JASON format(<code>{"result":"OK","files":["name":"xxxxx","name":"xxxxx"]}</code>) message about all the file within <code>video folder</code> in SD Card. Once you get the fileName you could just go to this url <code>http://192.168.1.1/mmc/video/xxxxx.264</code> to download it(might figure your IP address under station mode).</p>
+<pre><code>/hicat/files
+</code></pre>
+
+<p><code>success</code>:{"result":"OK","files":["name":"xxxxx","name":"xxxxx"]}  <br />
+<code>error</code>:{"result":"ERROR"}</p>
+<p>6.<strong>Video Record</strong>: This API allows you to record and delete the video and auto save into the default <code>video</code> folder in SD card.</p>
+<pre><code>/hicat/record?save=1
+/hicat/record?del=xxxxxxxx.h264
+</code></pre>
+
+<p><code>save=1</code>: start recording
+<code>save=0</code>: stop recording and save
+<code>del=xxxxxxxx.h264</code>: delete xxxxxxxx.h264
+<code>success</code>：{"result":"OK"}  <br />
+<code>error</code>：{"result":"ERROR"}</p>
+<p>7.<strong>Video Setting</strong>: Switch video angle, video resolution and video fps.</p>
+<pre><code>/hicat/setCamera?resolve=1&amp;rotate=0&amp;fps=20
+</code></pre>
+
+<p><code>success</code>：{"result":"OK"}  <br />
+<code>error</code>：{"result":"ERROR"}</p>
+<p>//only work under mjpg mode</p>
+<p>8.<strong>Snapshot</strong>: snap shot form one of the frame form MJPEG stream. We suggest to make the direction to /www/mmc/video/ coz the photo info could be receive under <code>/hicat/files</code> API.</p>
+<pre><code>/hicat/snapshot?name=xxx.jpg&amp;dir=/www/mmc/video/
+</code></pre>
+
+<p><code>success</code>：{"result":"OK"}    </p>
+<p>9.<strong>For test</strong>: test api, do nothing but test.</p>
+<pre><code>/hicat/test
+</code></pre>
+
+<p><code>success</code>：{"result":"OK"}   </p>
+<h4 id="2embedded-linux-api"><strong>2.Embedded Linux API</strong></h4>
+<p>Detail information could be view under our github <a href="https://github.com/9crk/libhicat/blob/master/include/libhisiv.h">libhicat</a>, There are instructions guide you through development tools set up and workflow, please have a look.</p>
+<pre><code>#ifndef _LIBHISIV_H_
+#define _LIBHISIV_H_
+
+#ifdef __cplusplus 
+extern &quot;C&quot; { 
+#endif
+int venc_exit(int n);
+int venc_init(int resolve);//0:720P 1:QVGA(320*240) 2:VGA(640*480)
+int venc_init_more(int resolve,int mode,int fps);//resolve: 0/1/2  1280*720/320*240/640*480  mode: 0/1 H264/MJPEG
+int venc_requestIDR();//request IDR frame
+int venc_getFrame(char* buffer,int *datalen,int *pts,int *type);
+int venc_snap(char* buff,int xRes,int yRes);
+int venc_getYUV(int mode,char*buff);//mode=0 Y  mode=1 UV mode = 3 YUV420(SP)
+int venc_rotate(int dir);
+
+//for audio
+extern int aenc_init(int mode);// 0/1 PT_LPCM/AAC/
+extern int aenc_getFrame(char* buff);
+extern int aenc_exit();
+//jpeg to http
+extern int libyuvdist_startYuvDistService(int port);
+extern int libyuvdist_updateYuv(int iHandle,char* data,int len,int seq,unsigned long timeStamp);
+extern int libyuvdist_stopYuvDistService(int iHandle);
+extern int libyuvdist_setSettingCallback(int iHandle,int func);//int func(int resX,int resY,int fps)
+
+#ifdef __cplusplus 
+}
+#endif
+#endif
+</code></pre>
+
+<h4 id="3arduino-libray-api"><strong>3.Arduino Libray API</strong></h4>
+<p>The Arduino library wraps the web api, using serial communication and curl to communicate and send command to the video core(HI3518E). There are also example codes could be find in <a href="https://github.com/hicat-tech/hicat_arduino_library">github</a></p>
+<pre><code>
+
+#ifndef _HICAT_H_
+#define _HICAT_H_
+
+#include &lt;Arduino.h&gt;
+
+class HiCat
+{
+public:
+    HiCat();
+    int begin(void);
+
+    /**
+     * Take a picture
+     *
+     * @param file_name     picture name
+     * @return 0 - OK, otherwise - error code
+     */
+    int snapshot(const char *file_name);
+
+    /**
+     * Start to record a video which is saved at /www/mmc/video/
+     *
+     * @return 0 - OK, otherwise - error code
+     */
+    int record();
+
+    /**
+     * Stop to record a video
+     *
+     * @return 0 - OK, otherwise - error code
+     */
+    int stop_recording();
+
+    /**
+     * Set camera format
+     *
+     * @param resolution    0 - 1280*720, 2 - 640*480, 1 - 320*240
+     * @param rotation      0 - no rotation, 1 - 180 degree rotation
+     * @param fps           frame per secord from 1 to 25
+     * @return 0 - OK, otherwise - error code
+     */
+    int set_camera(int resolution, int rotation, int fps);
+
+    /**
+     * Set Wi-Fi mode
+     *
+     * @param mode  0 - AP mode, 1 - Station mode
+     * @param ssid  SSID
+     * @param password  password
+     * @return 0 - OK, otherwise - error code
+     */
+    int set_wifi(int mode, const char *ssid, const char *password);
+
+    /**
+     * Run a shell command
+     *
+     * @param command   shell command
+     * @return 0 - OK, otherwise - error code
+     */
+    int run(const char *command);
+
+private:
+    void prepare_web_command();
+    int read_result();
+};
+
+extern HiCat hicat;
+
+
+#endif // _HICAT_H_
+</code></pre></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '..';
+    </script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>
