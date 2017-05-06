@@ -123,8 +123,8 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<h3 id="api-guide"><strong>API GUIDE</strong></h3>
-<h4 id="1web-api"><strong>1.WEB API</strong></h4>
+<h3 id="api-guide"><font size=30><strong>API GUIDE</strong></font></h3>
+<h4 id="1web-api"><font size=30><strong>1.WEB API</strong></font></h4>
 <p>The Web API contains a set of REST API in order to interact with LIVERA in a convenient way through <code>AJAX</code> or <code>URL</code>. </p>
 <p><strong>AJAX Example:</strong></p>
 <pre><code class="javascript">
@@ -133,7 +133,7 @@
           xhr.open('GET', '/hicat/videoServer?mode=0', true)
           xhr.onload = function() {
             answer = JSON.parse(xhr.responseText)
-            console.log(answer1)            }
+            console.log(answer1)            
          }
         xhr.send()
     }
@@ -200,7 +200,7 @@
 </code></pre>
 
 <p><code>success</code>：{"result":"OK"}   </p>
-<h4 id="2embedded-linux-api"><strong>2.Embedded Linux API</strong></h4>
+<h4 id="2embedded-linux-api"><font size=30><strong>2.Embedded Linux API</strong></font></h4>
 <p>Detail information could be view under our github <a href="https://github.com/9crk/libhicat/blob/master/include/libhisiv.h">libhicat</a>, There are instructions guide you through development tools set up and workflow, please have a look.</p>
 <pre><code>#ifndef _LIBHISIV_H_
 #define _LIBHISIV_H_
@@ -233,11 +233,9 @@ extern int libyuvdist_setSettingCallback(int iHandle,int func);//int func(int re
 #endif
 </code></pre>
 
-<h4 id="3arduino-libray-api"><strong>3.Arduino Libray API</strong></h4>
+<h4 id="3arduino-libray-api"><font size=30><strong>3.Arduino Libray API</strong></font></h4>
 <p>The Arduino library wraps the web api, using serial communication and curl to communicate and send command to the video core(HI3518E). There are also example codes could be find in <a href="https://github.com/hicat-tech/hicat_arduino_library">github</a></p>
-<pre><code>
-
-#ifndef _HICAT_H_
+<pre><code>#ifndef _HICAT_H_
 #define _HICAT_H_
 
 #include &lt;Arduino.h&gt;

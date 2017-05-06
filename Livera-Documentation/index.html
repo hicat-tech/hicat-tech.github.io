@@ -176,22 +176,31 @@
 <li>Image streaming and processing <code>cloud</code> </li>
 </ul>
 <p><font size=40><strong>User Manual</strong></font></p>
-<p><img alt="Image" src="" /></p>
+<p><img alt="Image" src="./img/liveraPortInfoIMG.jpg" /></p>
 <p><strong>Power:</strong> LIVERA allows mulitpul ways of power supply</p>
 <ol>
 <li>3.7V lipo battery (No higher voltage)</li>
-<li>USB cable (2.0)</li>
-<li>I/O port</li>
+<li>USB Port (MCU)</li>
+<li>I/O port(VIN)</li>
 </ol>
 <p><strong>Hock Up Camera Module:</strong> The Livera core package contains 3 main conponent, 1. Livera Board 2. Camera Module 3. Extendable Cable.</p>
-<p>You could choose to directly plug in the Camera Module on to Livera Board, or use extendable cable to extend the Camera Module in order to build Robot.</p>
-<p><strong>Connect to Livera:</strong> Power up Livera, give a few second to boot, the WIFI access point hostname <code>hicat_xxxxxx</code> should show up on your PC/MOBILE's wifi list. The default wifi password is: <code>88888888</code></p>
-<p>Once you connected to LIVERA, you could Telnet()</p>
-<p><strong>Test Video Feature:</strong> LIVERA has two video streaming mode <code>RTSP/MJPEG</code>, RTSP stands for advence <code>H.264 raw video streaming</code> which works well with our Android app or any video Player which accepted RTSP streaming protocol. MJPEG would be a <code>WEB friendly</code> video format.</p>
-<p>Once you successfully boot up Livera and accessing into the WIFI, you can connect to the web app we built to test the board function.</p>
-<p>Go to web page <code>192.168.1.1/www/mmc/webapp/index.html</code> or the simplify version web page <code>192.168.1.1</code>. </p>
+<p>You could choose to directly plug in the Camera Module on to Livera Board, or use extendable cable to extend the Camera Module in order to build something like pan-tilt enabled Robot.</p>
+<p><strong>Connect to Livera(access point):</strong> Power up Livera, give a few second to boot, the WIFI access point hostname <code>hicat_xxxxxx</code> should show up on your PC/MOBILE's wifi list. The default wifi password is: <code>88888888</code></p>
+<p>Once you connected to LIVERA, you could Telnet into the Linux system within Livera.</p>
+<p><strong>Station WIFI Mode:</strong> you could let Livera connected to your local wifi hotspot in a lot of ways, btw we have provide a program call 'imhere' to let your got the new IP address of Livera.</p>
+<ul>
+<li>
+<p>web app: both <code>192.168.1.1</code> and <code>192.168.1.1/www/mmc/webapp/index.html</code>(this web app is placed in the <code>sd card</code>, could be download on <code>https://github.com/hicat-tech/webapp</code>) offers station web form.</p>
+</li>
+<li>
+<p>linux command line: follow the section <code>Access into Linux(3518E)</code> below, within the <code>/hicat/</code> folder you should find the <code>launch.sh</code> tool</p>
+</li>
+</ul>
+<p><strong>Test Video Feature:</strong> LIVERA has two video streaming mode <code>RTSP/MJPEG</code>, RTSP stands for advence <code>H.264 codec raw video streaming</code> which works well with our Android app or any video Players which accepted RTSP streaming protocol(suggest to use VLC player). MJPEG would be a <code>WEB friendly</code> video format.</p>
+<p>Once you successfully boot up Livera and connected into the WIFI, you can go to the web app we built to test the board's functions with your web browser, btw Chrome would be the best choice.</p>
+<p>Go to <code>web api</code> web page <code>192.168.1.1</code> or the custom web app which could be copy into the sd card<code>192.168.1.1/www/mmc/webapp/index.html</code>. </p>
 <p>Once the web page show up, hit the <code>LiveView</code> button to get video stream from Livera. </p>
-<p><strong>Access into Linux(3518E):</strong> Livera accept <code>telnet</code> connections, when you connected to Livera with WIFI, you could open up your terminal, type:</p>
+<p><strong>Access into Linux(3518E):</strong> Livera accept <code>telnet</code> connections, when you connected to Livera through WIFI, you could open up your terminal, type:</p>
 <pre><code>telnet 192.168.1.1       //if you let the board connected to the router you should find the correct IP address
 
 //User:root
@@ -200,11 +209,33 @@
 cd /hicat/   //firmware directory
 ./launch.sh   //Main script for main operation: video setting/mount sd card
 
-cd /hicat/www/mmc  //SD card directory
+cd /www/mmc  //SD card directory
 </code></pre>
 
+<p>beside the internet ways, you could also go <code>serial communication</code> through the given <code>UART</code> port on Livera. </p>
+<p><strong>Reset Livera:</strong> </p>
+<ul>
+<li>
+<p><strong>wifi reset:</strong> hold the reset buttom <code>RST-PBC</code>, you would see the led light <code>STAT</code> flashing per second, count for <code>3 seconds</code> <strong>ps: very careful to not let it flash more than 10 seconds,</strong> once you see the led flash faster, the wifi <code>hicat_xxxxxx</code> would comes up in your wifi list.</p>
+</li>
+<li>
+<p><strong>factory reset:</strong> make sure there is a folder named <a href="https://github.com/9crk/libhicat/blob/master/opt/hicatEx.tar">hicat_failsafe.tar</a>, if so, hold the reset buttom <code>RST-PBC</code>, you would see the led light <code>STAT</code> flashing per second, count for <code>10 seconds</code>, once you see the led flash faster, you would get a brand new Livera.</p>
+</li>
+</ul>
+<p><strong>SD Card:</strong></p>
+<p><strong>mount sd card:</strong> if you want to mount a brand new sd card to Livera, stick it into the sd slot and follow the steps below.</p>
+<ul>
+<li>follow the above step<code>access into Linux(3518E)</code>to telnet into Livera(simular like ssh) </li>
+<li>goto the address <code>cd /hicat/</code> </li>
+<li>within the <code>hicat</code> directory you should find the command line tool named <code>launsh.sh</code> </li>
+<li>then go <code>./launch.sh sd</code> you should see 4 options <code>format|mount|umount|hicatEx</code>, <code>format</code> means format the sd card into <code>fat32</code> file system which works like <code>./launch.sh sd format</code>, mount&amp;umount would let you mount the sd card to <code>/www/mmc</code> directory, hicatEx would helps you to depackage the <a href="https://github.com/9crk/libhicat/blob/master/opt/hicatEx.tar">hicatEx.tar</a> (put it into sd card before you go <code>hicatEx</code>) which contains some important programs for Livera's system. </li>
+<li>do <code>format</code> first(format the sd card into fat32 in your pc/mac would be okay), then go <code>mount</code>, finally <code>hicatEx</code>.</li>
+<li>once you finished format and mount the sd card there will be you could chose to put the   <a href="https://github.com/9crk/libhicat/tree/master/opt/opencvlib">OpenCV lib</a> into <code>opencv</code> folder incase for opencv demo.</li>
+</ul>
 <h3 id="hardware"><font size=60><strong>Hardware</strong></font></h3>
 <h4 id="livera"><font size=40><strong>Livera</strong></font></h4>
+<p>Livera's given I/O port has connected into <code>MCU(Atmel 32u4)</code>, and the pin layout is pretty much likely to <code>Arduino Mini</code>, you could program it with arduino IDE through the given <code>USB port</code>, select the board to <code>arduino leonardo</code>.
+<img alt="Image" src="./img/liveraPortIMG.jpg" /></p>
 <h4 id="motor-driver"><font size=40><strong>Motor Driver</strong></font></h4>
 <h4 id="the-robot-kit-assembly-guide"><font size=40><strong>The Robot kit Assembly Guide</strong></font></h4>
 <h3 id="software"><font size=60><strong>Software</strong></font></h3>
@@ -231,33 +262,11 @@ saveenv
 </code></pre>
 
 <p>then reboot the board or execute 'reset' command.</p>
-<p><strong>How to use opencv Demo</strong>
-1. clone this repo
-2. then install the compiler
-3. compile the apps under 'app' dir with <code>./build.sh</code>
-4. copy the app dir to the board
-5. copy the opt/opencvlib dir to the board at /www/mmc/opencv/opencvlib
-6. <code>cd app &amp;&amp; source env.sh</code>
-7. <code>execute './capture'</code> to capture an image named 'myImage.jpg'
-8. <code>execute './match model.jpg'</code> to find the object model.jpg in the camera.
-9. then you can browser the result hi.jpg on http://192.168.1.1/mmc/opencv/app/hi.jpg</p>
 <p><strong>About rtspserver and libhisiv.a</strong></p>
 <p>rtspserver have two demo:
 <em> one is modified from live555 project. ( live555MediaServer )
- * source code is in https://bitbucket.org/zhouhua/hicat_rtspserver
- * play Address: rtsp://192.168.1.1/hicat.264
-</em> one is a http-rtp based program. with only binary file provided. ( http-rtpServer )
- * play Address: http://192.168.1.1/cgi-bin/video.sdp but must with zwebs running first.</p>
-<p>you can rename any of it as 'rtspserver',then it will be run in the next boot. or run /hicat/launch.sh restart to restart all services.
-libhisiv.a contains all the camera function.as below:</p>
-<pre><code>extern int venc_exit(int n);//0 
-extern int venc_init(int resolve);//0:720P 1:QVGA 2:VGA
-extern int venc_requestIDR();
-extern int venc_getFrame(char* buffer,int *datalen);//get h264 frame data.
-extern int venc_rotate(int dir);//0:no rotate 2:180 digree rotate.
-extern int venc_getYUV(int mode,char*buff);//get YUV data.
-</code></pre>
-
+</em> source code is in https://bitbucket.org/zhouhua/hicat_rtspserver
+* play Address: rtsp://192.168.1.1/hicat.264</p>
 <p><strong>How to install software pack</strong></p>
 <ol>
 <li>execute 'lrz' command to send libhicat/opt/hi_sd.sh into the board (any where)</li>
@@ -274,18 +283,19 @@ extern int venc_getYUV(int mode,char*buff);//get YUV data.
  <strong>zwebs</strong> https://9crk@bitbucket.org/zhouhua/hicat_zwebs.git</p>
 <p><strong>How to use programming with serial port on Hisiv</strong>
  <strong>libSerial</strong> https://github.com/9crk/libSerial.git</p>
-<p><strong>Source Code</strong> can be view <a href="https://github.com/9crk/libhicat">here</a></p>
+<p><strong>Linux SDK Source Code</strong> can be view <a href="https://github.com/9crk/libhicat">here</a></p>
 <h4 id="android"><font size=40><strong>Android</strong></font></h4>
 <h4 id="web-app"><font size=40><strong>Web app</strong></font></h4>
 <p><img alt="Image" src="./img/webappIMG1.jpg" /></p>
 <p>The web app provides functions like Video recording, Live streaming, </p>
 <p>What an amazing feature about livera is it could <code>serve web pages</code> as web app thanks to the file streaming server, in Livera's demo, we've provided a single page web app which based on VUE.js, the app would work as Livera's command panel.</p>
+<p>To use the web app you could go download the web app <a href="https://github.com/hicat-tech/webapp">here</a></p>
 <p>The server also provide <code>REST API</code> which allows you to communicate with Livera through AJAX</p>
 <!-- #### __Arduino library__ -->
 
 <h3 id="example-code"><font size=60><strong>Example Code</strong></font></h3>
 <h4 id="image-capturing"><font size=40><strong>Image Capturing</strong></font></h4>
-<p><strong>1. Image capture within Arduino</strong></p>
+<p><strong>1. Image capture with Arduino Way</strong></p>
 <pre><code class="c">
     #include "hicat.h"
 
@@ -308,7 +318,10 @@ extern int venc_getYUV(int mode,char*buff);//get YUV data.
     }
 </code></pre>
 
+<p><strong>2. Image capture with WEB Way</strong></p>
+<p><strong>3. Image capture with Linux(c/c++) Way</strong></p>
 <h4 id="robot-kit"><font size=40><strong>Robot Kit</strong></font></h4>
+<p><strong>Websocket and bridge system:</strong> bridge is a <code>websocket server</code> that runs on the <code>linux core</code>, help to accept websocket connections to Livera on<code>port 7681</code> and transfer the information to <code>MCU(32u4)</code>.</p>
 <pre><code class="c">
 
     // hicat robot demo
@@ -486,7 +499,7 @@ extern int venc_getYUV(int mode,char*buff);//get YUV data.
           xhr.open('GET', '/hicat/videoServer?mode=0', true)
           xhr.onload = function() {
             answer = JSON.parse(xhr.responseText)
-            console.log(answer1)            }
+            console.log(answer1)            
          }
         xhr.send()
     }
@@ -669,6 +682,18 @@ extern HiCat hicat;
 <li><strong>download address:</strong> <a href="http://pan.baidu.com/s/1c1qOQ6O">download link</a>  <strong>verifycode:</strong> <code>kspc</code>   <strong>decode password:</strong> <code>lk87612umzvcb01qqsalv</code></li>
 </ul>
 <h4 id="opencv"><font size=40><strong>openCV</strong></font></h4>
+<p><strong>How to use opencv Demo</strong></p>
+<ol>
+<li>clone <a href="https://www.github.com/9crk/libhicat">this</a> repo</li>
+<li>then install the compiler</li>
+<li>compile the apps under 'app' dir with <code>./build.sh</code></li>
+<li>copy the app dir to the board</li>
+<li>copy the opt/opencvlib dir to the board at /www/mmc/opencv/opencvlib</li>
+<li><code>cd app &amp;&amp; source env.sh</code></li>
+<li><code>execute './capture'</code> to capture an image named 'myImage.jpg'</li>
+<li><code>execute './match model.jpg'</code> to find the object model.jpg in the camera.</li>
+<li>then you can browser the result hi.jpg on http://192.168.1.1/mmc/opencv/app/hi.jpg</li>
+</ol>
 <p>The way To do <code>black-line tracking.</code></p>
 <p><strong>1.check out the files.</strong> </p>
 <pre><code>~/libhicat/app$ ls__
@@ -770,6 +795,6 @@ for(i=0;i&lt;10;i++){
 </html>
 
 <!--
-MkDocs version : 0.16.0
-Build Date UTC : 2017-04-10 03:43:07
+MkDocs version : 0.16.3
+Build Date UTC : 2017-05-06 20:30:11
 -->
