@@ -183,20 +183,18 @@
 <li>USB Port (MCU)</li>
 <li>I/O port(VIN)</li>
 </ol>
+<p><img alt="Image" src="./img/CamExtend.jpg" /></p>
 <p><strong>Hock Up Camera Module:</strong> The Livera core package contains 3 main conponent, 1. Livera Board 2. Camera Module 3. Extendable Cable.</p>
 <p>You could choose to directly plug in the Camera Module on to Livera Board, or use extendable cable to extend the Camera Module in order to build something like pan-tilt enabled Robot.</p>
-<p><strong>Connect to Livera(access point):</strong> Power up Livera, give a few second to boot, the WIFI access point hostname <code>hicat_xxxxxx</code> should show up on your PC/MOBILE's wifi list. The default wifi password is: <code>88888888</code></p>
+<p><img alt="Image" src="./img/liveraWifiLoggin.jpg" /></p>
+<p><strong>Connect to Livera(access point):</strong> Power up Livera, give a few second to boot, the WIFI access point hostname <code>hicat_xxxxxx</code> should show up on your PC/MOBILE's wifi list. The default wifi password is: <code>88888888</code> </p>
+<p>You could change the WIFI name by the web app <code>192.168.1.1</code> or <code>192.168.1.1/www/mmc/index.html</code></p>
+<p>You could slso do it through linux command line: follow the section <code>Access into Linux(3518E)</code> below, within the <code>/hicat/</code> folder you should find the <code>launch.sh</code> tool, run the program <code>./launch.sh ap SSID password</code></p>
 <p>Once you connected to LIVERA, you could Telnet into the Linux system within Livera.</p>
 <p><strong>Station WIFI Mode:</strong> you could let Livera connected to your local wifi hotspot in a lot of ways, btw we have provide a program call 'imhere' to let your got the new IP address of Livera.</p>
-<ul>
-<li>
 <p>web app: both <code>192.168.1.1</code> and <code>192.168.1.1/www/mmc/webapp/index.html</code>(this web app is placed in the <code>sd card</code>, could be download on <code>https://github.com/hicat-tech/webapp</code>) offers station web form.</p>
-</li>
-<li>
-<p>linux command line: follow the section <code>Access into Linux(3518E)</code> below, within the <code>/hicat/</code> folder you should find the <code>launch.sh</code> tool</p>
-</li>
-</ul>
-<p><strong>Test Video Feature:</strong> LIVERA has two video streaming mode <code>RTSP/MJPEG</code>, RTSP stands for advence <code>H.264 codec raw video streaming</code> which works well with our Android app or any video Players which accepted RTSP streaming protocol(suggest to use VLC player). MJPEG would be a <code>WEB friendly</code> video format.</p>
+<p><img alt="Image" src="./img/webappIMG3.jpg" /></p>
+<p><strong>Test Video Feature:</strong> LIVERA has two video streaming mode <code>RTSP/MJPEG</code>, RTSP stands for advence <code>H.264 codec raw video streaming</code> which works well with our Android app or any video Players which accepted RTSP streaming protocol(suggest to use VLC player). <code>MJPEG</code> would be a <code>WEB friendly</code> video format, once you set the board into MJPEG Mode, you could view the live video stream on the url: <code>http://192.168.1.1:8080</code>, suggest use chrome browser to visit.</p>
 <p>Once you successfully boot up Livera and connected into the WIFI, you can go to the web app we built to test the board's functions with your web browser, btw Chrome would be the best choice.</p>
 <p>Go to <code>web api</code> web page <code>192.168.1.1</code> or the custom web app which could be copy into the sd card<code>192.168.1.1/www/mmc/webapp/index.html</code>. </p>
 <p>Once the web page show up, hit the <code>LiveView</code> button to get video stream from Livera. </p>
@@ -285,10 +283,12 @@ saveenv
  <strong>libSerial</strong> https://github.com/9crk/libSerial.git</p>
 <p><strong>Linux SDK Source Code</strong> can be view <a href="https://github.com/9crk/libhicat">here</a></p>
 <h4 id="android"><font size=40><strong>Android</strong></font></h4>
+<p><img alt="Image" src="./img/androidApp1.png" />
+<img alt="Image" src="./img/androidApp2.png" /></p>
 <h4 id="web-app"><font size=40><strong>Web app</strong></font></h4>
 <p><img alt="Image" src="./img/webappIMG1.jpg" /></p>
 <p>The web app provides functions like Video recording, Live streaming, </p>
-<p>What an amazing feature about livera is it could <code>serve web pages</code> as web app thanks to the file streaming server, in Livera's demo, we've provided a single page web app which based on VUE.js, the app would work as Livera's command panel.</p>
+<p>What an amazing feature about livera is it could <code>serve web pages</code> as web app thanks to the file streaming server, in Livera's demo, we've provided a single page web app which based on <code>VUE.js</code>, the app would work as Livera's command panel.</p>
 <p>To use the web app you could go download the web app <a href="https://github.com/hicat-tech/webapp">here</a></p>
 <p>The server also provide <code>REST API</code> which allows you to communicate with Livera through AJAX</p>
 <!-- #### __Arduino library__ -->
@@ -796,5 +796,5 @@ for(i=0;i&lt;10;i++){
 
 <!--
 MkDocs version : 0.16.3
-Build Date UTC : 2017-05-06 20:30:11
+Build Date UTC : 2017-05-07 16:11:11
 -->
