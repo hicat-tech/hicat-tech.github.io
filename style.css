@@ -20,7 +20,8 @@ body{
 
 .navbar-default{
 	/*background-color: #252839;*/
-	height: 81px;
+	/*height: 81px;*/
+	/*padding-bottom: -15px;*/
 	border: none;
 	background-color: rgba(25,28,39,0.9);
 }
@@ -38,6 +39,11 @@ body{
 #hicatLogo{
 	  -webkit-filter: drop-shadow(2px 2px 2px #222);
     filter:         drop-shadow(2px 2px 2px #222); 
+}
+
+#nav-doc {
+	margin-right: 5px;
+	color: #ccc;
 }
 
 .navbar-text {
