@@ -18,6 +18,10 @@ body{
 	text-align: center;
 }*/
 
+nav.navbar.shrink {
+  height: 75px;
+}
+
 .navbar-default{
 	/*background-color: #252839;*/
 	/*height: 81px;*/
