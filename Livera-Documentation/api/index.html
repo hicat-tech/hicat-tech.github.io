@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../img/favicon.ico">
 
-    <title>API Guide - LIVERA Documentation</title>
+    <title>API Guide - LIVERA Documentation beta</title>
 
     <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -54,7 +54,7 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href="..">LIVERA Documentation</a>
+            <a class="navbar-brand" href="..">LIVERA Documentation beta</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -126,7 +126,7 @@
 <h3 id="api-guide"><font size=30><strong>API GUIDE</strong></font></h3>
 <h4 id="1web-api"><font size=30><strong>1.WEB API</strong></font></h4>
 <p>The Web API contains a set of REST API in order to interact with LIVERA in a convenient way through <code>AJAX</code> or <code>URL</code>. </p>
-<p><strong>AJAX Example:</strong></p>
+<p><strong>AJAX Example:</strong>the below could be run in general font-end javascript client side.</p>
 <pre><code class="javascript">
 
     var xhr = new XMLHttpRequest(){
@@ -138,6 +138,21 @@
         xhr.send()
     }
 
+</code></pre>
+
+<p><strong>Websocket and bridge system:</strong> bridge is a <code>websocket server</code> that runs on the <code>linux core</code>, help to accept websocket connections to Livera on<code>port 7681</code> and transfer the information to <code>MCU(32u4)</code>.</p>
+<p><strong>Websocket Example:</strong>we've built a websocket bridge server to help to transport text message from front-end web client to Arduino.</p>
+<pre><code class="javascript">
+                //server on port 7681
+                var WebSocketURL = 'ws://' + window.location.hostname + ':7681'
+
+                ws = new WebSocket(WebSocketURL);
+
+                ws.onopen = function(event) {
+                    console.log('ws connection opened:' + WebSocketURL);
+                }
+                ws.send(`msg`);
+                ws.close();
 </code></pre>
 
 <p>1.<strong>Set up Video Streaming Mode:</strong> This API allows you to swith between <code>RTSP</code> and <code>MJPEG</code> streaming mode, be careful that <code>Video Record API</code> only works under <code>RTSP Mode</code>, and <code>Screen Shot API</code> only works under <code>MJEPG Mode</code>.</p>
@@ -200,7 +215,7 @@
 </code></pre>
 
 <p><code>success</code>：{"result":"OK"}   </p>
-<h4 id="2embedded-linux-api"><font size=30><strong>2.Embedded Linux API</strong></font></h4>
+<h4 id="2embedded-linux-api"><strong>2.Embedded Linux API</strong></h4>
 <p>Detail information could be view under our github <a href="https://github.com/9crk/libhicat/blob/master/include/libhisiv.h">libhicat</a>, There are instructions guide you through development tools set up and workflow, please have a look.</p>
 <pre><code>#ifndef _LIBHISIV_H_
 #define _LIBHISIV_H_
@@ -233,7 +248,7 @@ extern int libyuvdist_setSettingCallback(int iHandle,int func);//int func(int re
 #endif
 </code></pre>
 
-<h4 id="3arduino-libray-api"><font size=30><strong>3.Arduino Libray API</strong></font></h4>
+<h4 id="3arduino-libray-api"><strong>3.Arduino Libray API</strong></h4>
 <p>The Arduino library wraps the web api, using serial communication and curl to communicate and send command to the video core(HI3518E). There are also example codes could be find in <a href="https://github.com/hicat-tech/hicat_arduino_library">github</a></p>
 <pre><code>#ifndef _HICAT_H_
 #define _HICAT_H_
