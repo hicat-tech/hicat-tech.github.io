@@ -124,15 +124,6 @@
                 <li class="third-level"><a href="#the-robot-kit-assembly-guide">The Robot kit Assembly Guide</a></li>
             
         
-            <li class="second-level"><a href="#software">Software</a></li>
-            
-                <li class="third-level"><a href="#firmware">Firmware</a></li>
-            
-                <li class="third-level"><a href="#android">Android</a></li>
-            
-                <li class="third-level"><a href="#web-app">Web app</a></li>
-            
-        
             <li class="second-level"><a href="#example-code">Example Code</a></li>
             
                 <li class="third-level"><a href="#image-capturing">Image Capturing</a></li>
@@ -371,24 +362,6 @@ cd /www/mmc  //SD card directory
 <p>Click <code>ROBOT</code> to open the control panel, Try press forward button, if you see the robot <code>spinning</code> or <code>move back,</code> you could adjust the wiring by switch the <code>DC motor</code> wire from the adapter.</p>
 </li>
 </ul>
-<h3 id="software"><font size=60><strong>Software</strong></font></h3>
-<h4 id="firmware"><font size=40><strong>Firmware</strong></font></h4>
-<p>Livera frimware is basically embedded Linux shell script with some executable program, which works immediately while Livera power on, keeping all the functions like <code>MJPG/H264 Server</code>, <code>Bridge System</code>, <code>Rest API</code> works.</p>
-<h4 id="android"><font size=40><strong>Android</strong></font></h4>
-<p>We've provided a custom android app for Livera, you could download it on our github page: <a href="https://github.com/hicat-tech/livera-android">https://github.com/hicat-tech/livera-android</a>, the APP could help you liveview video, control robots, and access to livera's web app.</p>
-<p>Do not forget the turn the livera into <code>RTSP(H264) Mode</code> before open the liveview and robot function.</p>
-<p><strong>APP main page:</strong></p>
-<p><img alt="Image" src="./img/androidApp1.png" /></p>
-<p><strong>Robot control panel:</strong></p>
-<p><img alt="Image" src="./img/androidApp2.png" /></p>
-<h4 id="web-app"><font size=40><strong>Web app</strong></font></h4>
-<p><img alt="Image" src="./img/webappIMG1.png" /></p>
-<p>The web app provides functions like Video recording, Live streaming, video download, wifi setting, visual tracking.</p>
-<p><strong>RTSP/MJPG MODE SWITCH:</strong>Once you open up the web app in your browser, the First thing to do is to select a video mode from <code>RTSP</code> to <code>MJPG</code>, after the selection you would immediately see some of UI changed according to different mode.</p>
-<p><img alt="Image" src="./img/webappIMG4.png" /></p>
-<p>What an amazing feature about livera is it could <code>serve web pages</code> as web app thanks to the file streaming server, in Livera's demo, we've provided a single page web app which based on <code>VUE.js</code>, the app would work as Livera's command panel.</p>
-<p>To use the web app you could go download the web app <a href="https://github.com/hicat-tech/webapp">here</a></p>
-<p>The server also provide <code>REST API</code> which allows you to communicate with Livera through AJAX</p>
 <!-- #### __Arduino library__ -->
 
 <h3 id="example-code"><font size=60><strong>Example Code</strong></font></h3>
@@ -967,5 +940,5 @@ for(i=0;i&lt;10;i++){
 
 <!--
 MkDocs version : 0.16.3
-Build Date UTC : 2017-06-28 09:55:53
+Build Date UTC : 2017-06-28 17:06:26
 -->
