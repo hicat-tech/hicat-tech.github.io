@@ -415,6 +415,62 @@ cd /www/mmc  //SD card directory
 </code></pre>
 
 <p><strong>2. Image capture with WEB Way</strong></p>
+<p>Livera's build in web server accept <code>rest API</code>, for detail description you could check out the <code>WEB API</code> guide. </p>
+<p>One thing you have to Notice is that Livera has <code>two image streming mode</code>, which are <code>MJPG</code> for web and <code>H264</code> for more advance video streaming.</p>
+<ul>
+<li><strong>For Video Capturing:</strong> </li>
+</ul>
+<pre><code>
+    //type the url directly within browser
+    //IP address could be different if you use station mode.
+
+    //first step, make sure you are in H264(RTSP) Mode
+    192.168.1.1/hicat/videoServer?mode=0
+
+    //Second step, start capture
+    192.168.1.1/hicat/record?save=1
+
+    //finally, stop
+    192.168.1.1/hicat/record?save=0
+
+    //AJAX is also avaliable, here is example with client side javascript
+    var xhr = new XMLHttpRequest(){
+          xhr.open('GET', '/hicat/videoServer?mode=0', true)
+          xhr.onload = function() {
+            answer = JSON.parse(xhr.responseText)
+            console.log(answer1)            
+         }
+        xhr.send()
+
+
+</code></pre>
+
+<ul>
+<li><strong>For Image Capturing:</strong> </li>
+</ul>
+<pre><code>
+    //type the url directly within browser
+    //IP address could be different if you use station mode.
+
+    //first step, make sure you are in MJPG Mode
+    192.168.1.1/hicat/videoServer?mode=1
+
+    //Second step, start capture image
+    //you could set up the image name xxx.jpg and stored direction '/www/mmc' is the SD card's directory
+    192.168.1.1/hicat/snapshot?name=xxx.jpg&amp;dir=/www/mmc/video/
+
+    //AJAX is also avaliable, here is example with client side javascript
+    var xhr = new XMLHttpRequest(){
+          xhr.open('GET', '/hicat/videoServer?mode=1', true)
+          xhr.onload = function() {
+            answer = JSON.parse(xhr.responseText)
+            console.log(answer1)            
+         }
+        xhr.send()
+
+
+</code></pre>
+
 <p><strong>3. Image capture with Linux(c/c++) Way</strong></p>
 <h4 id="robot-kit"><font size=40><strong>Robot Kit</strong></font></h4>
 <p><strong>Websocket and bridge system:</strong> bridge is a <code>websocket server</code> that runs on the <code>linux core</code>, help to accept websocket connections to Livera on<code>port 7681</code> and transfer the information to <code>MCU(32u4)</code>.</p>
@@ -671,7 +727,7 @@ cd /www/mmc  //SD card directory
 
 <p><code>save=1</code>: start recording
 <code>save=0</code>: stop recording and save
-<code>del=xxxxxxxx.h264</code>: delete xxxxxxxx.h264
+<code>del=xxxxxxxx.h264</code>: delete file xxxxxxxx.h264
 <code>success</code>：{"result":"OK"}  <br />
 <code>error</code>：{"result":"ERROR"}</p>
 <p>7.<strong>Video Setting</strong>: Switch video angle, video resolution and video fps.</p>
@@ -965,5 +1021,5 @@ for(i=0;i&lt;10;i++){
 
 <!--
 MkDocs version : 0.16.3
-Build Date UTC : 2017-06-28 17:17:01
+Build Date UTC : 2017-07-17 16:31:19
 -->
