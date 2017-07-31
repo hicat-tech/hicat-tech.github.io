@@ -119,7 +119,7 @@
                 <p class="navbar-text navbar-left" id="hicat">HICAT</p>
             </div>
             <a class="navbar-text navbar-right" id="nav-doc" href="/Livera-Documentation">DOC</a>
-            <!-- <a class="navbar-text "  href="https://hicatslack.herokuapp.com/">Community</a> -->
+            <a class="navbar-text " id="nav-slack" href="https://hicatslack.herokuapp.com/">SLACK</a>
         </div>
         <!-- /.container-fluid -->
     </nav>
@@ -262,6 +262,11 @@
             $('#nav-doc').css("display", "block");
             $('#nav-doc').css("font-size", "25px");
             $('#nav-doc').css("margin", "0px");
+            $('#nav-doc').css("padding-right", "30px");
+             $('#nav-slack').css("display", "block");
+            $('#nav-slack').css("font-size", "25px");
+            $('#nav-slack').css("margin", "0px");
+             $('#nav-slack').css("padding-right", "20px");
         }
     });
     $(window).scroll(function() {
@@ -272,12 +277,14 @@
             } else {
                $('nav').addClass('shrink');
                 $('#nav-doc').css("display", "none");
+                $('#nav-slack').css("display", "none");
             }
         
 
     } else {
         $('nav').removeClass('shrink');
         $('#nav-doc').css("display", "block");
+        $('#nav-slack').css("display", "block");
     }
     });
     </script>
