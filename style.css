@@ -46,7 +46,8 @@ nav.navbar.shrink {
 }
 
 #nav-doc {
-	margin-right: 15px;
+
+	margin-right: 35px;/* sitck right*/
 	color: #ccc;
 	font-size: 30px;
 	padding-top: 15px;
