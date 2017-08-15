@@ -47,22 +47,43 @@ nav.navbar.shrink {
 
 #nav-doc {
 
-	margin-right: 35px;/* sitck right*/
+	margin-right: 15px;/* sitck right*/
 	color: #ccc;
-	font-size: 30px;
-	padding-top: 15px;
+	font-size: 20px;
+	padding-top: 23px;
 	display: inline-block;
 	float: right;
 
 }
+
+#nav-store {
+
+	margin-right: 35px;/* sitck right*/
+	color: #3fb0ac;
+	font-size: 20px;
+	margin-top: 29px;
+	padding: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	display: inline-block;
+	float: right;
+
+	/*color: #379683;*/
+	border:3px solid #3fb0ac;
+	/*background-color: #379683;*/
+	border-radius: 23px;
+	font-weight: bold;
+	opacity: 0.8;
+
+} 
 
 #nav-slack{
 	margin-right: 15px;
 	color: #ccc;
 	display: inline-block;
 	float: right;
-	font-size: 30px;
-	padding-top: 15px;
+	font-size: 20px;
+	padding-top: 23px;
 }
 
 .navbar-text {
@@ -128,14 +149,33 @@ nav.navbar.shrink {
 }
 
 #icon7 {
-	width: 300px;
-	padding-left: 20%;
+	width: 320px;
+	padding-left: 15%;
 }
 
 #icon8 ,#icon9 {
 	width: 300px;
 	padding: 20px;
 	margin: auto 10px ;
+}
+
+.intro-words {
+	float: left;
+}
+
+#icon10 {
+	/*float: right;*/
+	width: 170px;
+	padding-left: 40px;
+
+}
+
+#icon11 {
+	/*float: right;*/
+	width: 200px;
+	/*padding-left: 40px;*/
+	padding-right: 20px;
+
 }
 
 #coulddolist {

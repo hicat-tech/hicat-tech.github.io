@@ -1,0 +1,63 @@
+body {
+	background-color: #fff;
+}
+
+#item-block {
+	padding-top: 200px;
+}
+
+.carousel img{
+	height: 200px;
+	/*width: 70%;*/
+}
+
+#item-title {
+	font-size: 50px;
+	font-weight: bold;
+	text-align: left;
+	display: block;
+}
+
+#item-price {
+	font-size: 35px;
+	/*font-weight: bold;*/
+	color: #252835;
+}
+
+#item-listitem{
+	margin-top: 10px;
+}
+
+#item-listitem ul{
+	font-size: 0.6em;
+	text-align: left;
+	list-style-type: none; 
+	width: 100px;
+}
+
+#item-listitem li{
+	width: 100px;
+	/*font-size: 0.5em;*/
+	/*text-align: left;*/
+	list-style-type: none; 
+	display: block;
+	text-align: left;
+	/*padding: 0 40%;*/
+	float: left;
+	margin-left: -90%;
+}
+
+#nav-check {
+	margin-right: 15px;/* sitck right*/
+	color: #ccc;
+	font-size: 20px;
+	padding-top: 23px;
+	display: inline-block;
+	float: right;
+}
+
+.col-md-3 {
+	text-align: left;
+	float: left;
+}
+

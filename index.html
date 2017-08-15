@@ -10,6 +10,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="css/spaceCraft.css">
     <link rel="icon" type="image/png" sizes="192x192" href="icon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="icon/favicon-96x96.png">
@@ -58,7 +59,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button> -->
-                <a class="navbar-brand navbar-left" href="#">
+                <a class="navbar-brand navbar-left" href="index.html">
                     <svg version="1.1" id="hicatLogo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
                         <style type="text/css">
                         .st0 {
@@ -121,7 +122,8 @@
                 </a>
                 <p class="navbar-text navbar-left" id="hicat">HICAT</p>
             </div>
-            <a class="navbar-text navbar-right" id="nav-doc" href="/Livera-Documentation">DOC</a>
+            <a class="navbar-text navbar-right" id="nav-store" href="shop.html">SHOP NOW</a>
+            <a class="navbar-text" id="nav-doc" href="/Livera-Documentation">DOC</a>
             <a class="navbar-text " id="nav-slack" href="https://hicatslack.herokuapp.com/">SLACK</a>
         </div>
         <!-- /.container-fluid -->
@@ -130,15 +132,24 @@
         <div class="container-fluid">
             <h1>Introducing</br>HICAT.Livera!</h1>
             <p>Powerful machine vision platform for Micro Robotics</p>
-            <form class="from" role="search" action="https://formspree.io/hicatelectronic@gmail.com" method="POST">
+              <button style="padding: 6px; padding-left: 20px; padding-right: 20px; margin-bottom: 20px; border-radius:10px; border:3px solid #f4f4f4; background: none; font-size: 25px;" onclick="playVideo()">Watch Intro Video <span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+          
+         <form class="from" role="search" action="https://formspree.io/hicatelectronic@gmail.com" method="POST">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="yourmail@email.com" id="emailInput" name="name">
-                    <!-- <input type="text" class="form-control" placeholder="any comment?" name="_replyto" id="emailInput"> -->
-                </div>
+                    <input style="background: none; color: #fff; border: 3px solid #fff;border-radius: 10px; width: 280px;" type="text" class="form-control" placeholder="yourmail@email.com" id="emailInput" name="name">
+                   <!-- <input type="text" class="form-control" placeholder="any comment?" name="_replyto" id="emailInput"> -->
+            </div>
                 <button type="submit" class="btn btn-success" value="Send">Subscribe</button>
+
             </form>
-        </div>
-    </div>
+        </div>  
+</div>
+  <div id="player"></div>
+    <a onclick="closePlay()" style="z-index:1000; position: absolute; top:660px; right: 300px; font-size: 40px; color: #ffffff;"></a>
+
+
+
+    
     <div id="featureblock">
         <div class="container-fluid" id="featureblock-container">
             <div class="row" id="featureList">
@@ -230,30 +241,355 @@
             </div>
         </div>
     </div>
-    <div id="links" class="container－fluid">
+
+     <div class="container-fluid" id="coulddolist">
         <div class="row">
             <div class="col-md-6">
+                <!-- <div class="row"> -->
+                     <div class="col-md-6">
+                         <img src="img/icon10.png" id="icon10">
+                    </div>
+                    <div class="col-md-6" class="intro-words">
+                       <span><strong>Livera Motor Driver</strong></span><br>
+                       <span><strong>Fexibility:</strong> Control up to 4X DC Motor, 4X Servo Motor and 2X Stepper Motor. Would cover most of the Robotics related use cases</span><br>
+                       <span><strong>Power:</strong> Accepted 3 ways of power input, including USB, Standard 2.54 Power Connector and Bonding Part For 5V~12V DC Current</span>
+                    </div>
+                <!-- </div> -->
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                         <img src="img/icon11.png" id="icon11">
+                    </div>
+                    <div class="col-md-6" class="intro-words">
+                       <span><strong>Livera Robot Kit</strong></span><br>
+                       <span><strong>Assembly and Play:</strong> Learn Robotics and computer vision technologies by hands on Livera Robot assembly kit, with detailed guide through Programming and Machanical Building</span><br>
+                       <span><strong>Reusable:</strong> The Robot kit contains Livera, Livera Motor Driver and various electronics and structual components, All of them are resuable for your advance robotics development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div id="links" class="container－fluid">
+        <div class="row">
+            <div class="col-md-6" >
                 <div class="text-center">
                     <!--  <a href="https://hackaday.io/project/10323-hicatlivera-arduino-compatible-machine-vision" class="btn btn-xlarge">Extra Large</a> -->
-                    <button class="btn btn-xlarge outline" style="color: #59bb67; margin-top: 40px;" onclick="window.location.href='https://www.kickstarter.com/projects/945994322/hicatlivera-start-making-your-first-machine-vision' ; return false;">
+                    <button class="btn btn-xlarge outline" style="color: #59bb67; margin-top: 40px;" onclick="window.open('https://www.kickstarter.com/projects/945994322/hicatlivera-start-making-your-first-machine-vision','_blank')">
                         View our Kickstarter Page
                     </button>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" >
                 <div class="text-center">
                     <!--  <a href="https://hackaday.io/project/10323-hicatlivera-arduino-compatible-machine-vision" class="btn btn-xlarge">Extra Large</a> -->
-                    <button class="btn btn-xlarge outline" style="margin-top: 40px" onclick="window.location.href='https://hackaday.io/project/10323-hicatlivera-arduino-compatible-machine-vision' ; return false;">
+                    <button class="btn btn-xlarge outline" style="margin-top: 40px" onclick="window.open('https://hackaday.io/project/10323-hicatlivera-arduino-compatible-machine-vision','_blank')">
                         View our HACKADAY profile
                     </button>
                 </div>
             </div>
-        </div>
+            </div>
         <div class="row">
-            <div class="text-center" style="color: #ccc; margin-top: 40px; ">
+            <div class="text-center" style="color: #ccc; margin-top: 180px; ">
                 <p>contact us: info@hicat.io</p>
             </div>
         </div>
+
+
+<!-- animation -->
+             <div class='container' ontouchstart=''>
+  <div class='tunnel' style="width: 100%;">
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+    <div class='tunnel-ring'>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+      <div class='side'></div>
+    </div>
+  </div>
+  <div class='fighter'>
+    <div class='part gun'>
+      <div class='g-side front'>
+        <div class='gun-inner'>
+          <div class='gi-side front'>
+            <div class='laser'></div>
+          </div>
+          <div class='gi-side left'></div>
+          <div class='gi-side bottom'></div>
+          <div class='gi-side right'></div>
+          <div class='gi-side top'></div>
+        </div>
+      </div>
+      <div class='g-side left'></div>
+      <div class='g-side bottom'></div>
+      <div class='g-side right'></div>
+      <div class='g-side top'></div>
+    </div>
+    <div class='part main'>
+      <div class='m-shortside front'></div>
+      <div class='m-longside bottom'></div>
+      <div class='m-longside left'></div>
+      <div class='m-longside right'></div>
+      <div class='m-longside top'>
+        <div class='cockpit'></div>
+      </div>
+    </div>
+    <div class='part wing left'></div>
+    <div class='part wing right'></div>
+    <div class='part fr-engine-pt-left'>
+      <div class='fe-longside front'></div>
+      <div class='fe-shortside bottom'></div>
+      <div class='fe-longside left'></div>
+      <div class='fe-longside right'></div>
+      <div class='fe-shortside top'></div>
+    </div>
+    <div class='part fr-engine-pt-right'>
+      <div class='fe-longside front'></div>
+      <div class='fe-shortside bottom'></div>
+      <div class='fe-longside left'></div>
+      <div class='fe-longside right'></div>
+      <div class='fe-shortside top'></div>
+    </div>
+    <div class='part left-engine'>
+      <div class='longside left'></div>
+      <div class='shortside front'></div>
+      <div class='longside bottom'></div>
+      <div class='shortside back'>
+        <div class='exhaust'></div>
+      </div>
+      <div class='longside right'></div>
+      <div class='longside top'>
+        <div class='upper-engine'>
+          <div class='u-longside left'></div>
+          <div class='u-shortside front'></div>
+          <div class='u-shortside back'>
+            <div class='exhaust'></div>
+          </div>
+          <div class='u-longside right'></div>
+          <div class='u-longside top'></div>
+        </div>
+      </div>
+    </div>
+    <div class='part middle'>
+      <div class='longside left'></div>
+      <div class='shortside front'></div>
+      <div class='longside bottom'></div>
+      <div class='shortside back'></div>
+      <div class='longside right'></div>
+      <div class='longside top'>
+        <div class='fin'>
+          <div class='f-longside left'></div>
+          <div class='f-shortside front'></div>
+          <div class='f-longside right'></div>
+          <div class='f-shortside back'></div>
+          <div class='f-longside top'></div>
+        </div>
+      </div>
+    </div>
+    <div class='part right-engine'>
+      <div class='longside left'></div>
+      <div class='shortside front'></div>
+      <div class='longside bottom'></div>
+      <div class='shortside back'>
+        <div class='exhaust'></div>
+      </div>
+      <div class='longside right'></div>
+      <div class='longside top'>
+        <div class='upper-engine'>
+          <div class='u-longside left'></div>
+          <div class='u-shortside front'></div>
+          <div class='u-shortside back'>
+            <div class='exhaust'></div>
+          </div>
+          <div class='u-longside right'></div>
+          <div class='u-longside top'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+        
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
@@ -261,6 +597,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
+        $('#player').css("display","none");
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             $('#nav-doc').css("display", "block");
             $('#nav-doc').css("font-size", "25px");
@@ -270,6 +607,10 @@
             $('#nav-slack').css("font-size", "25px");
             $('#nav-slack').css("margin", "0px");
             $('#nav-slack').css("padding-right", "20px");
+             $('#nav-store').css("display", "block");
+            $('#nav-store').css("font-size", "25px");
+            $('#nav-store').css("margin", "0px");
+            $('#nav-store').css("padding-right", "30px");
         }
     });
     $(window).scroll(function() {
@@ -281,6 +622,7 @@
                 $('nav').addClass('shrink');
                 $('#nav-doc').css("display", "none");
                 $('#nav-slack').css("display", "none");
+                $('#nav-store').css("display", "none");
             }
 
 
@@ -288,8 +630,69 @@
             $('nav').removeClass('shrink');
             $('#nav-doc').css("display", "block");
             $('#nav-slack').css("display", "block");
+             $('#nav-store').css("display", "block");
         }
     });
+
+     var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  var player;
+  function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: (window.innerWidth || document.body.clientWidth)*0.6,
+    width: window.innerWidth || document.body.clientWidth,
+    videoId: '5XKEvHbZnWQ',
+    playerVars: { 'autoplay': 1, 'controls': 1, 'showinfo':0, 'rel': 0},
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+     function onPlayerReady(event) {
+         event.target.pauseVideo();
+        // player.mute();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 45000);
+          // done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+        // player.seekTo(1);
+        $('#player').css("display","none");
+    $('.jumbotron').css("display","block");
+    $('.navbar').css("background","rgba(25,28,39,0.9)");
+     $('#nav-doc').css("display", "block");
+            $('#nav-slack').css("display", "block");
+             $('#nav-store').css("display", "block");
+}
+
+function playVideo(){
+    $('#player').css("display","block");
+    $('.jumbotron').css("display","none");
+    // $('.navbar').css("background","none");
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+     $('#nav-doc').css("display", "none");
+                $('#nav-slack').css("display", "none");
+                $('#nav-store').css("display", "none");
+$('.navbar').css("background","none");
+            }
+    player.playVideo();
+    player.seekTo(1);
+}
+
+
     </script>
 </body>
 
