@@ -86,6 +86,15 @@ nav.navbar.shrink {
 	padding-top: 23px;
 }
 
+#nav-forum{
+	margin-right: 15px;
+	color: #ccc;
+	display: inline-block;
+	float: right;
+	font-size: 20px;
+	padding-top: 23px;
+}
+
 .navbar-text {
 	/*font-size: 51px;*/
 	margin-top: 15px;

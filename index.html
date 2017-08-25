@@ -125,6 +125,7 @@
             <a class="navbar-text navbar-right" id="nav-store" href="shop.html">SHOP NOW</a>
             <a class="navbar-text" id="nav-doc" href="/Livera-Documentation">DOC</a>
             <a class="navbar-text " id="nav-slack" href="https://hicatslack.herokuapp.com/">SLACK</a>
+             <a class="navbar-text " id="nav-forum" href="https://forum.hicat.io">FORUM</a>
         </div>
         <!-- /.container-fluid -->
     </nav>
@@ -611,6 +612,10 @@
             $('#nav-store').css("font-size", "25px");
             $('#nav-store').css("margin", "0px");
             $('#nav-store').css("padding-right", "30px");
+             $('#nav-forum').css("display", "block");
+            $('#nav-forum').css("font-size", "25px");
+            $('#nav-forum').css("margin", "0px");
+            $('#nav-forum').css("padding-right","30px");
         }
     });
     $(window).scroll(function() {
@@ -623,6 +628,7 @@
                 $('#nav-doc').css("display", "none");
                 $('#nav-slack').css("display", "none");
                 $('#nav-store').css("display", "none");
+                $('#nav-forum').css("display", "none");
             }
 
 
@@ -631,6 +637,7 @@
             $('#nav-doc').css("display", "block");
             $('#nav-slack').css("display", "block");
              $('#nav-store').css("display", "block");
+             $('#nav-forum').css("display", "block");
         }
     });
 
@@ -676,6 +683,7 @@
      $('#nav-doc').css("display", "block");
             $('#nav-slack').css("display", "block");
              $('#nav-store').css("display", "block");
+              $('#nav-forum').css("display", "block");
 }
 
 function playVideo(){
@@ -686,6 +694,7 @@ function playVideo(){
      $('#nav-doc').css("display", "none");
                 $('#nav-slack').css("display", "none");
                 $('#nav-store').css("display", "none");
+                 $('#nav-forum').css("display", "none");
 $('.navbar').css("background","none");
             }
     player.playVideo();
